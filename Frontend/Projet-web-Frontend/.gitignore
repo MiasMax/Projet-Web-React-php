@@ -5,6 +5,21 @@
 .env.test.local
 .env.production.local
 
+# VS Code
+.vscode/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vsp
+*.vspscc
+*.vssscc
+*.sln
+*.vcxproj.user
+
+
 # Logs
 logs
 *.log
