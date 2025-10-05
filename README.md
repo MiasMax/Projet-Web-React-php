@@ -2,6 +2,12 @@
 
 Projet de développement web full-stack avec React en frontend et PHP/PostgreSQL en backend.
 
+Back
+C:\xampp\htdocs
+
+Front
+D:\Project Informatique\Projet-Web-React-php
+
 ## Prérequis
 
 Avant de commencer, assurez-vous d'avoir installé les outils suivants :
@@ -24,34 +30,47 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
   extension=pdo_pgsql
   extension=pgsql
 
+##### Add composer au php de xampp
+
+install :
+https://getcomposer.org/download
+
+add this to your path (du system ou du user)
+C:\ProgramData\ComposerSetup\bin
+
+system -> variable d'environement
+
+##### install dotenv variable
+composer require vlucas/phpdotenv
+
 #### Configuration React avec vite
 
 Crée un projet react :
 ```bash
 npm create vite@latest Projet-web-Frontend
 ```
+```bash
+npm install react-router-dom
+```
 
 #### Configuration tailwindcss
 
-Crée une config tailwindcss :
-```bash
-npm install tailwindcss @tailwindcss/vite
-```
-
-et add dans vite.config.js : 
-
-```js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-// https://vite.dev/config/
-export default defineConfig({
-plugins: [
-	react(),
-	tailwindcss()
-	],
-})
+Changer le index.html : 
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silksong Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
 ```
 
 ## 🚀 Execution
@@ -85,6 +104,16 @@ http://localhost/index.php
 
 ## Base de donnée
 
-ouvre pgadmin 4 avec projetweb
+#### Interface Graphique :
+
+ouvre "pgadmin 4" avec projetweb
+
+query tool worplace
+select the current BD
+
+#### CMD :
+
+ouvre psql 
+
 
 
