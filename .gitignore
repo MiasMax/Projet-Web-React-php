@@ -7,6 +7,17 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
+/vendor/                # Dependencies Composer
+/composer.lock          # Lock file (à pousser en prod)
+
+# =============================================
+# ENVIRONMENT
+# =============================================
+.env                    # Fichier environnement local
+.env.local              # Surcharge locale
+.env.*.local            # Tous les fichiers env locaux
+!.env.example           # EXCEPTION : exemple à pousser
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
