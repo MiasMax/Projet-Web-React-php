@@ -8,6 +8,11 @@ C:\xampp\htdocs
 Front
 D:\Project Informatique\Projet-Web-React-php
 
+command to copy file from xampp
+```bash
+cp -r C:\xampp\htdocs\* .\Backend\
+```
+
 ## Prérequis
 
 Avant de commencer, assurez-vous d'avoir installé les outils suivants :
