@@ -65,3 +65,4 @@ TestResult.xml
 nunit-*.xml
 /.vs
 /Backend/.vs
+/Backend/vendor
