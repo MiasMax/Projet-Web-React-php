@@ -8,7 +8,9 @@ class Router {
 
     public function dispatch($uri) {
         $path = parse_url($uri, PHP_URL_PATH);
-        $path = str_replace('/silksong-backend', '', $path); // Adjust for subdirectory
+        $path = "/api/characters";
+        echo  $path;
+        $path = str_replace('/Backend', '', $path); // Adjust for subdirectory
         
         foreach ($this->routes as $route => $config) {
             // Simple routing - you can enhance with regex for dynamic parameters
@@ -16,7 +18,7 @@ class Router {
                 $controller = $config['controller'];
                 $method = $config['method'];
                 
-                require_once "../app/controllers/$controller.php";
+                require_once "app/controllers/$controller.php";
                 $controllerInstance = new $controller();
                 $controllerInstance->$method();
                 return;

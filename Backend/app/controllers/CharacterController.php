@@ -1,4 +1,8 @@
 <?php
+
+require_once 'app\models\Database.php';
+require_once 'app\models\CharacterModel.php';
+
 class CharacterController {
     private $characterModel;
 

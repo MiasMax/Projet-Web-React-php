@@ -2,23 +2,23 @@
 class Database {
     private $host = 'localhost';
     private $db_name = 'silksong_db';
-    private $username = 'root';
-    private $password = '';
+    private $username = 'postgres';
+    private $password = 'projetweb';
     public $conn;
 
     public function getConnection() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name, 
-                $this->username, 
-                $this->password
-            );
-            $this->conn->exec("set names utf8");
-        } catch(PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
-        }
-        return $this->conn;
+		$this->conn = null;
+		try {
+			$connection_string = "host=" . $this->host . " dbname=" . $this->db_name . " user=" . $this->username . " password=" . $this->password;
+			$this->conn = pg_connect($connection_string);
+			
+			if (!$this->conn) {
+				throw new Exception("Connection error: Unable to connect to PostgreSQL database");
+			}
+		} catch(Exception $exception) {
+			echo "Connection error: " . $exception->getMessage();
+		}
+		return $this->conn;
     }
 }
 ?>
