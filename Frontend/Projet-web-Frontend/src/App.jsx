@@ -44,9 +44,10 @@ return (
 				}`}>
 			<div className="container mx-auto px-4">
 				<div className="flex justify-between items-center py-4">
-				<Link to="/" className="text-2xl font-bold text-yellow-400 hover:text-yellow-300 transition-colors">
-					🕷️ Silksong Wiki
-				</Link>
+				<Link to="/" >
+					<p className="text-2xl font-bold bg-gradient-to-r from-red-400 to-yellow-600 bg-clip-text text-transparent hover:text-yellow-300 transition-colors">
+					Silksong Wiki
+					</p></Link>
 				<div className="space-x-6">
 					<Link 
 					to="/" 
@@ -73,14 +74,12 @@ return (
 
 			{/* Main Content */}
 			<main>
-				<div className="">
-			
+			<div className="p-12"></div>
 				<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/characters" element={<Characters />} />
 				<Route path="/bosses" element={<Bosses />} />
 				</Routes>
-				</div>
 			</main>
 
 			{/* Footer */}
