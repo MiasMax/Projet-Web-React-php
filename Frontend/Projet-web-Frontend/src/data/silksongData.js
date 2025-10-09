@@ -2,7 +2,7 @@ export const silksongData = {
   gameInfo: {
     title: "Hollow Knight: Silksong",
     description: "Hollow Knight: Silksong is the epic sequel to Hollow Knight, featuring Hornet as the protagonist in a whole new kingdom.",
-    releaseStatus: "Upcoming",
+    releaseStatus: "Released",
     developer: "Team Cherry",
     platforms: ["PC", "Nintendo Switch", "PlayStation", "Xbox"]
   },
