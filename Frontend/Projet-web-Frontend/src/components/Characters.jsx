@@ -6,7 +6,7 @@ const Characters = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-2">Characters</h1>
+      <h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">Characters</h1>
       <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
         Meet the inhabitants of Pharloom - allies, enemies, and mysterious figures you'll encounter in your journey.
       </p>
@@ -15,7 +15,15 @@ const Characters = () => {
         {characters.map(character => (
           <div key={character.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
             <div className="bg-gray-700 p-6 text-center">
-              <div className="text-6xl mb-4">{character.image}</div>
+              <div className="text-6xl mb-4">
+					<div className="mb-4 flex justify-center">
+						<img 
+							src={`/src/images/${character.name}.png`}
+							alt="Characters" 
+							className="w-40 h-40 rounded-full border-2 border-yellow-300 object-cover"
+						/>
+					</div>
+			  </div>
               <h2 className="text-2xl font-bold text-yellow-400">{character.name}</h2>
               <p className="text-gray-300 italic">{character.title}</p>
               <span className="inline-block mt-2 px-3 py-1 bg-blue-600 rounded-full text-sm">

@@ -87,7 +87,7 @@ return (
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
 						<img 
-							src="/src/images/hornet.jpg" 
+							src="/src/images/hornet.png" 
 							alt="Characters" 
 							className="w-12 h-12 rounded-full border-2 border-pink-400 object-cover"
 						/>

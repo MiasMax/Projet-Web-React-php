@@ -16,30 +16,37 @@ const Bosses = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-2">Bosses</h1>
+      <h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">Bosses</h1>
       <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
         Face the formidable guardians and powerful foes that stand between Hornet and her destiny.
       </p>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {bosses.map(boss => (
-          <div key={boss.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-            <div className="bg-gradient-to-r from-red-800 to-purple-800 p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="text-4xl">{boss.image}</div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-white">{boss.name}</h2>
-                    <p className="text-gray-300">{boss.title}</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${getDifficultyColor(boss.difficulty)} border border-current`}>
-                    {boss.difficulty}
-                  </span>
-                </div>
-              </div>
-            </div>
+			<div key={boss.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+				<div className="bg-gradient-to-r from-red-800 to-purple-800 p-6">
+					<div className="flex items-center justify-between">
+						<div className="flex items-center space-x-4">
+							<div className="text-6xl mb-4 flex justify-center">
+								<img 
+									src={`/src/images/${boss.name}.png`}
+									alt="Characters" 
+									className="w-40 h-40 rounded-full border-2 border-yellow-300 object-cover"
+								/>
+							</div>
+							<div>
+							<h2 className="text-2xl font-bold text-white">{boss.name}</h2>
+							<p className="text-gray-300">{boss.title}</p>
+							</div>
+							<div className="text-right">
+								<span className={`px-3 py-1 rounded-full text-sm font-semibold ${getDifficultyColor(boss.difficulty)} border border-current`}>
+									{boss.difficulty}
+								</span>
+						</div>
+						</div>
+							
+					</div>
+				</div>
             
             <div className="p-6">
               <div className="mb-4">
