@@ -5,7 +5,7 @@ const Home = () => {
 const { gameInfo } = silksongData
 
 return (
-	<div className="container mx-auto px-4 py-8">
+	<div className="container mx-auto px-4 py-8 pt-36 pb-20">
 		
 	{/* Hero Section */}
 		<section className="text-center mb-12">
@@ -81,8 +81,9 @@ return (
 		</section>
 
 		{/* Features Preview */}
-		<section className="mt-16 max-w-4xl mx-auto">
-			<h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-red-600 bg-clip-text text-transparent">What to Expect</h2>
+		<section className="mt-16 max-w-4xl mx-auto">  <h2 className="mb-8 text-4xl font-bold text-center text-white drop-shadow-lg">
+    What to Expect
+  </h2>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
@@ -116,6 +117,46 @@ return (
 					</div>
 					<h3 className="text-red-400 text-xl font-semibold mb-2">Challenging Combat</h3>
 					<p className="text-gray-300">Face over 150 new enemies and formidable bosses in intense combat encounters.</p>
+				</div>
+			</div>
+		</section>
+
+		<section className="mt-16 max-w-4xl mx-auto">
+			
+			<div className="bg-gradient-to-br from-orange-600/30 via-red-500/30 to-amber-600/30 rounded-2xl p-8 shadow-2xl backdrop-blur-sm border border-orange-400/20">
+				<h2 className="text-4xl font-bold text-center text-white drop-shadow-lg">Add to the Wiki?</h2>
+			
+				<div className="flex flex-col sm:flex-row gap-4 justify-center items-center p-6">
+					{/* Add Boss Button - Simple */}
+					
+					<Link 
+					to="/addcharacters" 
+					className="text-gray-300 hover:text-white transition-colors font-medium"
+					>			
+						<button className="group relative bg-gradient-to-r from-red-700 to-orange-600 rounded-xl px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-orange-500/50 min-w-64">
+							<div className="text-center">
+							<div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-orange-300/80">
+								<span className="text-xl">🔥</span>
+							</div>
+							<h3 className="text-xl font-bold text-white mb-1">Add New Character</h3>
+							</div>
+						</button>
+					</Link>
+
+					<Link 
+						to="/addbosses" 
+						className="text-gray-300 hover:text-white transition-colors font-medium"
+						>	
+						{/* Add Character Button - Simple */}
+						<button className="group relative bg-gradient-to-r from-blue-700 to-purple-600 rounded-xl px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-purple-500/50 min-w-64">
+							<div className="text-center">
+							<div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-purple-300/80">
+								<span className="text-xl">⚡</span>
+							</div>
+							<h3 className="text-xl font-bold text-white mb-1">Add New Boss</h3>
+							</div>
+						</button>
+					</Link>
 				</div>
 			</div>
 		</section>
