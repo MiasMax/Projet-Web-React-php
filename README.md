@@ -11,6 +11,10 @@ D:\Project Informatique\Projet-Web-React-php
 command to copy file from xampp
 ```bash
 cp -r C:\xampp\htdocs\* .\Backend\
+cp -r .\Backend\* C:\xampp\htdocs\
+
+cp -r C:\xampp\htdocs\* .\
+cp -r .\* C:\xampp\htdocs\
 ```
 
 ## Prérequis
