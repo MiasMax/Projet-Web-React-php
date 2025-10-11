@@ -31,6 +31,8 @@ function App() {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  
 return (
 	<div className="min-h-screen">
 		<div 

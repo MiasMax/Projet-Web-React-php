@@ -16,14 +16,13 @@ cp -r .\Backend\* C:\xampp\htdocs\
 cp -r C:\xampp\htdocs\* .\
 cp -r .\* C:\xampp\htdocs\
 
+a revoir
+
 rm -r "D:\Project Informatique\Projet-Web-React-php\Backend\app\*" 
 robocopy "C:\xampp\htdocs\app\" "D:\Project Informatique\Projet-Web-React-php\Backend\app\" /E
-
 robocopy "C:\xampp\htdocs\*" "D:\Project Informatique\Projet-Web-React-php\Backend\app\" /E
-
 rm -r "C:\xampp\htdocs\app\*"
 robocopy "D:\Project Informatique\Projet-Web-React-php\Backend\app\*" "C:\xampp\htdocs\app\" /E
-
 PS C:\xampp\htdocs> robocopy "C:\xampp\htdocs\app" "D:\Project Informatique\Projet-Web-React-php\Backend" /E
 ```
 

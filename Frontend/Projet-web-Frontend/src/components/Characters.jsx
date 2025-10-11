@@ -1,8 +1,25 @@
 import React from 'react';
 import { silksongData } from '../data/silksongData';
+import { useState, useEffect } from 'react';
 
 const Characters = () => {
-	const { characters } = silksongData;
+
+	const [charactersList, setCharactersList] = useState([]); // Initialize state
+
+	useEffect(() => {
+		fetch('http://localhost/api/characters', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+		})
+		.then(response => response.json())
+		.then(data => {
+		setCharactersList(data); // Update state with data
+		console.log(data); // This will show the data
+		})
+		.catch(error => console.error('Error:', error));
+	}, []);
 
 	return (
 		<div className="container mx-auto px-4 py-8 pt-36 pb-20">
@@ -12,7 +29,7 @@ const Characters = () => {
 			</p>
 			
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-				{characters.map(character => (
+				{charactersList.map(character => (
 
 					<div key={character.id} className="bg-slate-900/80 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 border border-red-600/40 backdrop-blur-sm">
 					<div className="bg-gradient-to-br from-red-900 via-orange-800 to-yellow-800 p-8 text-center relative overflow-hidden">
@@ -55,6 +72,7 @@ const Characters = () => {
 							</h3>
 						</div>
 						<ul className="space-y-3">
+
 							{character.abilities.map((ability, index) => (
 							<li key={index} className="text-orange-100 flex items-start group ">
 								<div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -64,7 +82,7 @@ const Characters = () => {
 						</ul>
 						</div>
 					</div>
-					</div>
+				</div>
 
 			))}
 		</div>

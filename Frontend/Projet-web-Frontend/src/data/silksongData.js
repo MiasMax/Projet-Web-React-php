@@ -18,7 +18,7 @@ export const silksongData = {
         "Thread & Silk - For traversal and combat",
         "Acrobatic movements"
       ],
-      image: "👑",
+      image: "hornet",
       role: "Playable Character"
     },
     {
@@ -63,7 +63,7 @@ export const silksongData = {
         "Fungal Illusions",
         "Nature's Wrath"
       ],
-      image: "🍄",
+      image: "moss-prophet",
       rewards: ["Moss Charm", "Silk Spool"]
     },
     {
