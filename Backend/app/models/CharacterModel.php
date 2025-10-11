@@ -9,6 +9,15 @@ class CharacterModel {
 		$this->conn = $db;
 	}
 
+	public function getLastId() {
+
+		$query = "SELECT * FROM characters ORDER BY id DESC LIMIT 1";
+		$result = pg_query($this->conn, $query);
+		$row = pg_fetch_assoc($result);
+
+		return $row['id'] + 1;
+	}
+
 	public function getAllCharacters() {
 
 		$query = "SELECT * FROM characters";
@@ -18,18 +27,30 @@ class CharacterModel {
 		return $result;
 	}
 
+	public function insertCharacter($name, $title, $role, $description, $abilities, $image) {
 
-	public function getCharacterById($id) {
-		$query = "SELECT c.*, GROUP_CONCAT(ca.ability SEPARATOR '|') as abilities 
-				FROM characters c 
-				LEFT JOIN character_abilities ca ON c.id = ca.character_id 
-				WHERE c.id = ? 
-				GROUP BY c.id";
+		$id = $this->getLastId();
+
+		$query = "INSERT INTO characters (id, name, title, description, abilities, image, role) 
+				VALUES ($1, $2, $3, $4, $5, $6, $7) 
+				RETURNING id";
+
+		$result = pg_query_params($this->conn, $query, [
+			$id,
+			$name,
+			$title,
+			$description,
+			$abilities,
+			$image,
+			$role
+		]);
+
+		if ($result) {
+			$row = pg_fetch_assoc($result);
+			return $row['id'];
+		}
 		
-		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $id);
-		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_ASSOC);
+		return false;
 	}
 }
 ?>

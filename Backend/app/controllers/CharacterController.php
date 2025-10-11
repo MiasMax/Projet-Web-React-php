@@ -28,16 +28,43 @@ class CharacterController {
 		return json_encode($characters);
 	}
 
-	public function update($id) {
-        // 1. Validate input
-        $data = $this->validateRequest();
-        
-        // 2. Update via Model
-        $user = User::find($id);
-        $user->update($data);
-        
-        // 3. Redirect or show view
-        return redirect('/users/' . $id);
-    }
+	public function insert() {
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+			$json = file_get_contents('php://input');
+
+			// Convertir la chaîne JSON en tableau associatif PHP
+			$data = json_decode($json, true);
+
+			// Extract the data
+			$name = $data['name'] ?? '';
+			$title = $data['title'] ?? '';
+			$role = $data['role'] ?? '';
+			$origin = $data['origin'] ?? '';
+			$description = $data['description'] ?? '';
+			$abilities = $data['abilities'] ?? [];
+			$image = strtolower(str_replace(' ', '-', $name)) . '.png';
+
+			$abilitiesJson = json_encode($abilities);
+			
+			$result = $this->characterModel->insertCharacter($name,$title,$role,$description,$abilitiesJson,$image);
+
+			echo json_encode([
+				'success' => true,
+				'message' => 'Data received successfully',
+				'receivedData' => [
+					'name' => $name,
+					'title' => $title,
+					'role' => $role,
+					'origin' => $origin,
+					'description' => $description,
+					'abilities' => $abilitiesJson
+				]
+			]);
+		
+			
+		}
+	}
 }
 ?>

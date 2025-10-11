@@ -7,7 +7,10 @@ $router = new Router();
 
 // Define routes
 $router->addRoute('/api/characters', 'CharacterController', 'getjson');
+$router->addRoute('/api/characters/insert', 'CharacterController', 'insert');
+
 $router->addRoute('/api/bosses', 'BossController', 'getjson');
+$router->addRoute('/api/bosses/insert', 'BossController', 'insert');
 
 // Dispatch the request
 $router->dispatch($_SERVER['REQUEST_URI']);
