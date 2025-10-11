@@ -1,9 +1,9 @@
 <?php
 require_once 'cors.php';
 
-class CharacterModel {
+class BossModel {
 	private $conn;
-	private $table = 'characters';
+	private $table = 'boss';
 
 	public function __construct($db) {
 		$this->conn = $db;
@@ -11,7 +11,7 @@ class CharacterModel {
 
 	public function getAllCharacters() {
 
-		$query = "SELECT * FROM characters";
+		$query = "SELECT * FROM bosses";
 
 		$result = pg_query($this->conn, $query);
 		

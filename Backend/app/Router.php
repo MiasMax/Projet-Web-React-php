@@ -1,4 +1,6 @@
 <?php
+require_once 'cors.php';
+
 class Router {
     protected $routes = [];
 
@@ -8,8 +10,7 @@ class Router {
 
     public function dispatch($uri) {
         $path = parse_url($uri, PHP_URL_PATH);
-        $path = "/api/characters";
-        echo  $path;
+        // $path = "/api/characters";
         $path = str_replace('/Backend', '', $path); // Adjust for subdirectory
         
         foreach ($this->routes as $route => $config) {

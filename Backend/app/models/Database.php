@@ -1,7 +1,9 @@
 <?php
+require_once 'cors.php';
+
 class Database {
     private $host = 'localhost';
-    private $db_name = 'silksong_db';
+    private $db_name = 'postgres';
     private $username = 'postgres';
     private $password = 'projetweb';
     public $conn;
