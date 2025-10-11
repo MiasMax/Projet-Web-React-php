@@ -1,5 +1,6 @@
 import { silksongData } from '../todelete/silksongData'
 import { Link } from 'react-router-dom'
+import { API_URL_IMG } from '../App';
 
 const Home = () => {
 const { gameInfo } = silksongData
@@ -41,7 +42,7 @@ return (
 			>
 			<div className="mb-4 flex">
 				<img 
-					src="/src/images/charactere.png" 
+					src={`${API_URL_IMG}charactere.png`}
 					alt="Characters" 
 					className="w-20 h-12 rounded-full border-2 border-yellow-300 object-cover"
 				/>
@@ -63,7 +64,7 @@ return (
 			>
 			<div className="mb-4 flex">
 				<img 
-					src="/src/images/boss2.png" 
+					src={`${API_URL_IMG}game.png`}
 					alt="Characters" 
 					className="w-100 h-12 rounded-full border-2 border-red-400 object-cover"
 				/>
@@ -87,8 +88,8 @@ return (
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
-						<img 
-							src="/src/images/hornet.png" 
+						<img
+							src={`${API_URL_IMG}hornet.png`}
 							alt="Characters" 
 							className="w-12 h-12 rounded-full border-2 border-pink-400 object-cover"
 						/>
@@ -98,8 +99,8 @@ return (
 				</div>
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
-						<img 
-							src="/src/images/start.png" 
+						<img
+							src={`${API_URL_IMG}start.png`}
 							alt="Characters" 
 							className="w-12 h-12 rounded-full border-2 border-yellow-300 object-cover"
 						/>
@@ -109,8 +110,8 @@ return (
 				</div>
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
-						<img 
-							src="/src/images/scary.png" 
+						<img
+							src={`${API_URL_IMG}scary.png`}
 							alt="Characters" 
 							className="w-12 h-12 rounded-full border-2 border-red-400 object-cover"
 						/>

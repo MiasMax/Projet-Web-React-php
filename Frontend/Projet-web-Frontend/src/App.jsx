@@ -5,12 +5,13 @@ import Bosses from './components/Bosses'
 import AddBosses from './components/AddBosses'
 import AddCharacters from './components/AddCharacters'
 import { useState, useEffect } from 'react';
-
+export const API_URL_IMG = 'http://localhost/public/images/';
 
 function App() {
 
 	const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+	const [lastScrollY, setLastScrollY] = useState(0);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +39,7 @@ return (
 		<div 
 			className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
 			style={{
-			backgroundImage: `url('/src/images/game.png')`,
+				backgroundImage: `url('${API_URL_IMG}game.png')`,
 			}}
 		/>
 

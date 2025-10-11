@@ -1,5 +1,5 @@
 import React from 'react';
-import { silksongData } from '../todelete/silksongData';
+import { API_URL_IMG } from '../App';
 
 const Add = () => {
 

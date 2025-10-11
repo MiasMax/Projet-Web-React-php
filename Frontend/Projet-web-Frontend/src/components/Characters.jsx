@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { API_URL_IMG } from '../App';
 
 const Characters = () => {
 
@@ -39,10 +40,10 @@ const Characters = () => {
 						<div className="relative">
 							<div className="absolute inset-0 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-300 rounded-full blur-xl opacity-40 animate-pulse"></div>
 							<div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-500 rounded-full blur-lg opacity-60 animate-pulse delay-75"></div>
-							<img 
-							src={`/src/images/${character.name}.png`}
-							alt={character.name}
-							className="w-36 h-36 rounded-full border-4 border-orange-300/90 object-cover relative z-10 shadow-2xl"
+							<img
+								src={`${API_URL_IMG}${character.image}`}
+								alt={character.name}
+								className="w-36 h-36 rounded-full border-4 border-orange-300/90 object-cover relative z-10 shadow-2xl"
 							/>
 						</div>
 						</div>

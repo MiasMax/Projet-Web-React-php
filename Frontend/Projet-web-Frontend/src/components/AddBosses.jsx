@@ -1,5 +1,4 @@
 import React from 'react';
-import { silksongData } from '../todelete/silksongData';
 
 const Add = () => {
 
