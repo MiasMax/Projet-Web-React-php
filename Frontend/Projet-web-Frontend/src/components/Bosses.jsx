@@ -1,18 +1,36 @@
 import React from 'react';
 import { silksongData } from '../data/silksongData';
+import { useState, useEffect } from 'react';
 
 const Bosses = () => {
-  const { bosses } = silksongData;
 
-  const getDifficultyColor = (difficulty) => {
-    switch (difficulty) {
-      case 'Easy': return 'text-green-400';
-      case 'Medium': return 'text-yellow-400';
-      case 'Hard': return 'text-orange-400';
-      case 'Very Hard': return 'text-red-400';
-      default: return 'text-gray-400';
-    }
-  };
+	const getDifficultyColor = (difficulty) => {
+		switch (difficulty) {
+		case 'Easy': return 'text-green-400';
+		case 'Medium': return 'text-yellow-400';
+		case 'Hard': return 'text-orange-400';
+		case 'Very Hard': return 'text-red-400';
+		default: return 'text-black-400';
+		}
+	};
+
+	const [BossesList, setBossesList] = useState([]); // Initialize state
+  
+	useEffect(() => {
+		fetch('http://localhost/api/bosses', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+		})
+		.then(response => response.json())
+		.then(data => {
+		setBossesList(data); // Update state with data
+		console.log(data); // This will show the data
+		})
+		.catch(error => console.error('Error:', error));
+	}, []);
+
 
   return (
 	<div className="container mx-auto px-4 py-8 pt-36 pb-20">
@@ -22,7 +40,7 @@ const Bosses = () => {
 		</p>
 		
 		<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-			{bosses.map(boss => (
+			{BossesList.map(boss => (
 					<div key={boss.id} className="bg-gray-800/80 rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-600/50 backdrop-blur-sm">	
 						<div className="bg-gradient-to-r from-red-900 via-purple-800 to-indigo-900 p-6 relative">
 							
