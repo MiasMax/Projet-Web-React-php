@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { API_URL_IMG } from '../App';
+import { API_URL_IMG, API_URL } from '../App';
 
 const Characters = () => {
 
 	const [charactersList, setCharactersList] = useState([]); // Initialize state
 
 	useEffect(() => {
-		fetch('http://localhost/api/characters', {
+		fetch(`${API_URL}api/characters`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

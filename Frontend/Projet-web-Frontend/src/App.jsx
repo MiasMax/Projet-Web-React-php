@@ -6,6 +6,7 @@ import AddBosses from './components/AddBosses'
 import AddCharacters from './components/AddCharacters'
 import { useState, useEffect } from 'react';
 export const API_URL_IMG = 'http://localhost/public/images/';
+export const API_URL = 'http://localhost/';
 
 function App() {
 

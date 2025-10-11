@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { API_URL_IMG } from '../App';
+import { API_URL_IMG, API_URL } from '../App';
 
 const Bosses = () => {
 
@@ -17,7 +17,7 @@ const Bosses = () => {
 	const [BossesList, setBossesList] = useState([]); // Initialize state
   
 	useEffect(() => {
-		fetch('http://localhost/api/bosses', {
+		fetch(`${API_URL}api/bosses`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Bosses = () => {
 								<div className="relative">
 								<div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-sm opacity-30"></div>
 								<img 
-									src={`/src/images/${boss.name}.png`}
+									src={`${API_URL_IMG}${boss.image}`}
 									alt={boss.name}
 									className="w-32 h-32 rounded-full border-4 border-yellow-400/80 object-cover relative z-10 shadow-lg"
 								/>
