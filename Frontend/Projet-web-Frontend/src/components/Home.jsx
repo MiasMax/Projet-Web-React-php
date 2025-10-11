@@ -1,4 +1,4 @@
-import { silksongData } from '../data/silksongData'
+import { silksongData } from '../todelete/silksongData'
 import { Link } from 'react-router-dom'
 
 const Home = () => {

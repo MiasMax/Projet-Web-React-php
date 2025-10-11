@@ -1,5 +1,4 @@
 import React from 'react';
-import { silksongData } from '../data/silksongData';
 import { useState, useEffect } from 'react';
 
 const Characters = () => {
