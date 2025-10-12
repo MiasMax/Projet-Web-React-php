@@ -13,6 +13,22 @@ class CharacterController {
         $this->characterModel = new CharacterModel($db);
     }
 
+	public function upload() {
+		if (isset($_FILES['image'])) {
+			$fileName = $_FILES['image']['name'];
+			$tmpPath = $_FILES['image']['tmp_name'];
+			$target = "public/images" . $fileName;
+
+			move_uploaded_file($tmpPath, $target);
+
+			echo json_encode([
+				"success" => true,
+				"filename" => $fileName,
+				"path" => $target
+			]);
+		}
+	}
+
 	public function getjson() {
 
 		$result = $this->characterModel->getAllCharacters();
@@ -44,7 +60,7 @@ class CharacterController {
 			$origin = $data['origin'] ?? '';
 			$description = $data['description'] ?? '';
 			$abilities = $data['abilities'] ?? [];
-			$image = strtolower(str_replace(' ', '-', $name)) . '.png';
+			$image = $data['image'];
 
 			$abilitiesJson = json_encode($abilities);
 			
