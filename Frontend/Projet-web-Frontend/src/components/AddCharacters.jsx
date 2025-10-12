@@ -42,19 +42,23 @@ const Add = () => {
 		}));
 	};
 
-	// const handleImageChange = (e) => {
-	// 	const file = e.target.files[0];
-	// 	if (file && file.size <= 10 * 1024 * 1024) {
-	// 	setFormData(prev => ({ ...prev, image: file }));
-	// 	const reader = new FileReader();
-	// 	reader.onloadend = () => {
-	// 		setImagePreview(reader.result);
-	// 	};
-	// 	reader.readAsDataURL(file);
-	// 	} else {
-	// 	alert('Please select an image under 10MB');
-	// 	}
-	// };
+	const handleImageChange = (e) => {
+		const file = e.target.files[0];
+		if (file && file.size <= 10 * 1024 * 1024) {
+			setFormData(prev => ({ ...prev, image: file }));
+
+			const reader = new FileReader();
+
+			reader.onloadend = () => {
+				setImagePreview(reader.result);
+			};
+
+			reader.readAsDataURL(file);
+			
+		} else {
+			alert('Please select an image under 10MB');
+		}
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -66,6 +70,12 @@ const Add = () => {
 		}
 		
 		try {
+			
+			handleUpload
+
+			const fileInput = document.getElementById("image-upload");
+			const filename = fileInput.files[0];
+
 			// Prepare form data for submission
 			const submitData = {
 				name: formData.name,
@@ -73,11 +83,9 @@ const Add = () => {
 				role: formData.role,
 				origin: formData.origin,
 				description: formData.description,
-				abilities: formData.abilities  // Send array directly, no JSON.stringify needed
+				abilities: formData.abilities,  // Send array directly, no JSON.stringify needed
+				image: filename
 			};
-			if (formData.image) {
-				submitData.append('image', formData.image);
-			}
 			
 			// Send POST request to your backend
 			const response = await fetch(`${API_URL}api/characters/insert`, {
@@ -120,6 +128,29 @@ const Add = () => {
 		} catch (error) {
 			console.error('Error submitting form:', error);
 			alert('Error adding character. Please try again.');
+		}
+	};
+
+	const handleUpload = async () => {
+
+		const formData = new FormData();
+		formData.append("image", selectedFile);
+
+		try {
+			const res = await fetch(`${API_URL}api/upload`, {
+				method: "POST",
+				body: formData, // browser sets headers automatically
+			});
+
+			const data = await res.json();
+			if (data.success) {
+				setMessage(`File uploaded successfully: ${data.path}`);
+			} else {
+				setMessage(`Error: ${data.error}`);
+			}
+		} catch (err) {
+			console.error(err);
+			setMessage("Upload failed!");
 		}
 	};
 
@@ -284,7 +315,7 @@ const Add = () => {
 				</div>
 
 				{/* Image Upload */}
-				{/* <div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-6 border border-orange-600/30">
+				<div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-6 border border-orange-600/30">
 					<label className="block text-orange-200 font-semibold mb-4">Character Image</label>
 					<div 
 					className="border-2 border-dashed border-orange-600/30 rounded-lg p-8 text-center hover:border-orange-400/50 transition-all cursor-pointer"
@@ -309,7 +340,7 @@ const Add = () => {
 						onChange={handleImageChange}
 					/>
 					</div>
-				</div> */}
+				</div>
 
 				{/* Submit Buttons */}
 				<div className="flex justify-center gap-4 pt-4">
