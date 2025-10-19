@@ -71,10 +71,10 @@ const Add = () => {
 		
 		try {
 			
-			handleUpload
+			const file = document.getElementById("image-upload").files[0];
+			const slugifyfilename = file.name.toLowerCase().replace(/\s+/g, '-');
 
-			const fileInput = document.getElementById("image-upload");
-			const filename = fileInput.files[0];
+			handleUpload(file,slugifyfilename);
 
 			// Prepare form data for submission
 			const submitData = {
@@ -84,9 +84,9 @@ const Add = () => {
 				origin: formData.origin,
 				description: formData.description,
 				abilities: formData.abilities,  // Send array directly, no JSON.stringify needed
-				image: filename
+				image: slugifyfilename
 			};
-			
+
 			// Send POST request to your backend
 			const response = await fetch(`${API_URL}api/characters/insert`, {
 				method: 'POST',
@@ -131,12 +131,16 @@ const Add = () => {
 		}
 	};
 
-	const handleUpload = async () => {
-
-		const formData = new FormData();
-		formData.append("image", selectedFile);
-
+	const handleUpload = async (file,name) => {
+    
 		try {
+			
+			if (!file)
+				throw new Error(`Erreur l'image n'a pas été chargé`);
+
+			const formData = new FormData();
+			formData.append("image", file);
+
 			const res = await fetch(`${API_URL}api/upload`, {
 				method: "POST",
 				body: formData, // browser sets headers automatically
@@ -144,13 +148,12 @@ const Add = () => {
 
 			const data = await res.json();
 			if (data.success) {
-				setMessage(`File uploaded successfully: ${data.path}`);
+				alert(`File uploaded successfully: ${data.path}`);
 			} else {
-				setMessage(`Error: ${data.error}`);
+				alert(`Error: ${data.error}`);
 			}
 		} catch (err) {
 			console.error(err);
-			setMessage("Upload failed!");
 		}
 	};
 
