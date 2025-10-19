@@ -15,9 +15,16 @@ class CharacterController {
 
 	public function upload() {
 		if (isset($_FILES['image'])) {
-			$fileName = $_FILES['image']['name'];
+			$fileName = $_FILES['image']['name'];// a faire changer le nom
+
+			// Convert to lowercase
+			$fileName = strtolower($fileName);
+
+			// Replace spaces with dashes
+			$fileName = str_replace(' ', '-', $fileName);
+			
 			$tmpPath = $_FILES['image']['tmp_name'];
-			$target = "public/images" . $fileName;
+			$target = "public/images/" . $fileName;
 
 			move_uploaded_file($tmpPath, $target);
 
