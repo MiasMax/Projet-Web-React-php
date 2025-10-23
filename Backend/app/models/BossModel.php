@@ -3,13 +3,22 @@ require_once 'cors.php';
 
 class BossModel {
 	private $conn;
-	private $table = 'boss';
+	private $table = 'bosses';
 
 	public function __construct($db) {
 		$this->conn = $db;
 	}
 
-	public function getAllCharacters() {
+	public function getLastId() {
+
+		$query = "SELECT * FROM bosses ORDER BY id DESC LIMIT 1";
+		$result = pg_query($this->conn, $query);
+		$row = pg_fetch_assoc($result);
+
+		return $row['id'] + 1;
+	}
+
+	public function getAllbosses() {
 
 		$query = "SELECT * FROM bosses";
 
@@ -18,18 +27,32 @@ class BossModel {
 		return $result;
 	}
 
-
-	public function getCharacterById($id) {
-		$query = "SELECT c.*, GROUP_CONCAT(ca.ability SEPARATOR '|') as abilities 
-				FROM characters c 
-				LEFT JOIN character_abilities ca ON c.id = ca.character_id 
-				WHERE c.id = ? 
-				GROUP BY c.id";
+	public function insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image) {
 		
-		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam(1, $id);
-		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_ASSOC);
+		$id = $this->getLastId();
+
+		$query = "INSERT INTO bosses (id, name, title, location, difficulty, description, attacksJson, rewardsJson, image) 
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+				RETURNING id";
+
+		$result = pg_query_params($this->conn, $query, [
+			$id,
+			$name,
+			$title,
+			$location,
+			$difficulty,
+			$description,
+			$attacksJson,
+			$rewardsJson,
+			$image
+		]);
+
+		if ($result) {
+			$row = pg_fetch_assoc($result);
+			return $row['id'];
+		}
+		
+		return false;
 	}
 }
 ?>

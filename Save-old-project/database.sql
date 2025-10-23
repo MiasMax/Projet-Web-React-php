@@ -19,3 +19,16 @@ CREATE TABLE characters (
 INSERT INTO characters (name, title, image, description, abilities, role) VALUES
 ('Hornet', 'Protagoniste et Princesse Protectrice', '🕷️', 'Héroïne jouable, princesse-protectrice de Hallownest', '["Toile de soie", "Aiguilles", "Arts de la soie"]', 'Protagoniste'),
 ('Shakra', 'Reine des Tisseuses', '👑', 'Souveraine mystérieuse du royaume de la soie', '["Contrôle de la soie", "Commandement"]', 'PNJ important');
+
+
+CREATE TABLE bosses (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	title VARCHAR(150),
+	location VARCHAR(150),
+	difficulty VARCHAR(255),
+	description TEXT,
+	attacks JSON,
+	rewards JSON,
+	image VARCHAR(255)
+);
