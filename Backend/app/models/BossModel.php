@@ -46,15 +46,6 @@ class BossModel {
 			$rewardsJson,
 			$image
 		]);
-$logDir = __DIR__ . "../../log";
-			
-		if ($result === false) {
-			$error = pg_last_error($this->conn);
-			file_put_contents($logDir . "/log1.txt", "[ ERROR ] : " . $error . PHP_EOL, FILE_APPEND);
-		} else {
-			$row = pg_fetch_assoc($result);
-			file_put_contents($logDir . "/log1.txt", "[ SUCCESS ] Inserted ID: " . $row['id'] . PHP_EOL, FILE_APPEND);
-		}
 
 		if ($result) {
 			$row = pg_fetch_assoc($result);

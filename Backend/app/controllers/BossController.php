@@ -73,13 +73,7 @@ class BossController {
 			$attacksJson = json_encode($attacks);
 			$rewardsJson = json_encode($rewards);
 			
-			$logDir = __DIR__ . "../../log";
-			if (!is_dir($logDir)) {mkdir($logDir, 0777, true);}
-			file_put_contents($logDir . "/log1.txt", "[" . date("Y-m-d H:i:s") . "] " . json_encode($data) . PHP_EOL, FILE_APPEND);
-
 			$result = $this->bossModel->insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image);
-
-			file_put_contents($logDir . "/log1.txt", "[ result ] : " . $result . PHP_EOL, FILE_APPEND);
 
 			echo json_encode([
 				'success' => true,
