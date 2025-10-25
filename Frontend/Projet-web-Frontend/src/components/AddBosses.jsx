@@ -3,6 +3,7 @@ import { API_URL_IMG, API_URL } from '../App';
 import { useState } from 'react';
 
 const Add = () => {
+
 	const [formData, setFormData] = useState({
 		name: '',
 		title: '',
@@ -99,6 +100,13 @@ const Add = () => {
 		e.preventDefault();
 
 		if (!formData.name || !formData.title || !formData.location || !formData.difficulty || !formData.description) {
+
+			
+		alert(formData.name);
+		alert(formData.title);
+		alert(formData.location);
+		alert(formData.difficulty);
+		alert(formData.description);
 		alert('Please fill in all required fields');
 		return;
 		}
@@ -205,6 +213,9 @@ const Add = () => {
 						<label className="block text-blue-200 font-semibold mb-2">Boss Name *</label>
 						<input 
 							type="text" 
+							name="name"
+							value={formData.name}
+							onChange={handleInputChange}
 							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="Enter boss name"
 							required
@@ -214,7 +225,8 @@ const Add = () => {
 						<label className="block text-blue-200 font-semibold mb-2">Title *</label>
 						<input 
 							type="text" 
-							value={formData.name}
+							name="title"
+							value={formData.title}
 							onChange={handleInputChange}
 							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="e.g., The Frost Dragon"
@@ -225,7 +237,8 @@ const Add = () => {
 						<label className="block text-blue-200 font-semibold mb-2">Location *</label>
 						<input 
 							type="text" 
-							value={formData.title}
+							name="location"
+							value={formData.location}
 							onChange={handleInputChange}
 							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="e.g., Icepeak Mountain"
@@ -234,7 +247,12 @@ const Add = () => {
 						</div>
 						<div>
 						<label className="block text-blue-200 font-semibold mb-2">Difficulty *</label>
-						<select className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all">
+						<select 
+						name="difficulty" 
+						value={formData.difficulty}
+						onChange={handleInputChange}
+						required
+						className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all">
 							<option value="">Select difficulty</option>
 							<option value="Easy" className="bg-slate-800">Easy</option>
 							<option value="Medium" className="bg-slate-800">Medium</option>
@@ -250,6 +268,7 @@ const Add = () => {
 					<label className="block text-blue-200 font-semibold mb-4">Boss Description *</label>
 					<textarea 
 						rows="4"
+						name="description"
 						value={formData.description} 
 						onChange={handleInputChange} 
 						className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
