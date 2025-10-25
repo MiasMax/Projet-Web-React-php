@@ -37,17 +37,18 @@ class BossController {
 
 	public function getjson() {
 
-		$result = $this->characterModel->getAllCharacters();
+		$result = $this->bossModel->getAllbosses();
 
-		$characters = [];
+		$bosses = [];
 
 		while ($row = pg_fetch_assoc($result)) {
-			$row['abilities'] = json_decode($row['abilities'], true); // Decode JSONB to array
-			$characters[] = $row;
+			$row['attacks'] = json_decode($row['attacks'], true); // Decode JSONB to array
+			$row['rewards'] = json_decode($row['rewards'], true); // Decode JSONB to array
+			$bosses[] = $row;
 		}
 
-		echo json_encode($characters);
-		return json_encode($characters);
+		echo json_encode($bosses);
+		return json_encode($bosses);
 	}
 
 	public function insert() {
@@ -72,7 +73,13 @@ class BossController {
 			$attacksJson = json_encode($attacks);
 			$rewardsJson = json_encode($rewards);
 			
-			$result = $this->bossModel->insertCharacter($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image);
+			$logDir = __DIR__ . "../../log";
+			if (!is_dir($logDir)) {mkdir($logDir, 0777, true);}
+			file_put_contents($logDir . "/log1.txt", "[" . date("Y-m-d H:i:s") . "] " . json_encode($data) . PHP_EOL, FILE_APPEND);
+
+			$result = $this->bossModel->insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image);
+
+			file_put_contents($logDir . "/log1.txt", "[ result ] : " . $result . PHP_EOL, FILE_APPEND);
 
 			echo json_encode([
 				'success' => true,

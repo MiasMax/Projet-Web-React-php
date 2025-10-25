@@ -100,13 +100,6 @@ const Add = () => {
 		e.preventDefault();
 
 		if (!formData.name || !formData.title || !formData.location || !formData.difficulty || !formData.description) {
-
-			
-		alert(formData.name);
-		alert(formData.title);
-		alert(formData.location);
-		alert(formData.difficulty);
-		alert(formData.description);
 		alert('Please fill in all required fields');
 		return;
 		}
@@ -128,29 +121,33 @@ const Add = () => {
 			image: slugifyfilename
 		};
 
+		console.log(submitData)
+
 		const response = await fetch(`${API_URL}api/bosses/insert`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(submitData)
 		});
 
+		console.log(response);
+
 		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
 		alert('Boss added successfully!');
 
-		setFormData({
-			name: '',
-			title: '',
-			location: '',
-			difficulty: '',
-			description: '',
-			attacks: [],
-			rewards: [],
-			image: null
-		});
-		setCurrentAttack('');
-		setCurrentReward('');
-		setImagePreview(null);
+		// setFormData({
+		// 	name: '',
+		// 	title: '',
+		// 	location: '',
+		// 	difficulty: '',
+		// 	description: '',
+		// 	attacks: [],
+		// 	rewards: [],
+		// 	image: null
+		// });
+		// setCurrentAttack('');
+		// setCurrentReward('');
+		// setImagePreview(null);
 		} catch (error) {
 		console.error('Error submitting form:', error);
 		alert('Error adding boss. Please try again.');

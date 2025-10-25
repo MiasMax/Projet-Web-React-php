@@ -31,8 +31,8 @@ class BossModel {
 		
 		$id = $this->getLastId();
 
-		$query = "INSERT INTO bosses (id, name, title, location, difficulty, description, attacksJson, rewardsJson, image) 
-				VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+		$query = "INSERT INTO bosses (id, name, title, location, difficulty, description, attacks, rewards, image) 
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
 				RETURNING id";
 
 		$result = pg_query_params($this->conn, $query, [
@@ -46,13 +46,22 @@ class BossModel {
 			$rewardsJson,
 			$image
 		]);
+$logDir = __DIR__ . "../../log";
+			
+		if ($result === false) {
+			$error = pg_last_error($this->conn);
+			file_put_contents($logDir . "/log1.txt", "[ ERROR ] : " . $error . PHP_EOL, FILE_APPEND);
+		} else {
+			$row = pg_fetch_assoc($result);
+			file_put_contents($logDir . "/log1.txt", "[ SUCCESS ] Inserted ID: " . $row['id'] . PHP_EOL, FILE_APPEND);
+		}
 
 		if ($result) {
 			$row = pg_fetch_assoc($result);
 			return $row['id'];
 		}
 		
-		return false;
+		return $result;
 	}
 }
 ?>
