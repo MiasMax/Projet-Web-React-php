@@ -1,8 +1,10 @@
 import React from 'react';
 import { API_URL_IMG, API_URL } from '../App';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Add = () => {
+	const { t } = useTranslation();
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -181,16 +183,16 @@ const Add = () => {
 			{/* Form Header */}
 			<div className="text-center mb-8">
 			<h1 className="text-5xl font-bold bg-gradient-to-r from-orange-200 via-yellow-200 to-amber-200 bg-clip-text text-transparent mb-4">
-				Add New Character
+				{t('addCharacterButton')}
 			</h1>
-			<p className="text-orange-200 text-lg">Register your hero to the archives</p>
+			<p className="text-orange-200 text-lg">{t('resister')}</p>
 			</div>
 
 			{/* Main Form Card */}
 			<div className="bg-slate-900/80 rounded-2xl overflow-hidden shadow-2xl border border-red-600/40 backdrop-blur-sm">
 			<div className="bg-gradient-to-br from-red-900 via-orange-800 to-yellow-800 p-8 relative overflow-hidden">
 				<div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-orange-500/10 to-yellow-400/5 mix-blend-overlay"></div>
-				<h2 className="text-3xl font-bold text-orange-100 relative z-10 text-center">Character Information</h2>
+				<h2 className="text-3xl font-bold text-orange-100 relative z-10 text-center">{t('info')}</h2>
 			</div>
 
 			<div className="p-8 space-y-6 bg-gradient-to-b from-slate-900/90 to-slate-800/90">
@@ -201,13 +203,13 @@ const Add = () => {
 					<div className="flex items-center mb-6">
 					<div className="w-2 h-8 bg-gradient-to-b from-yellow-400 via-orange-500 to-red-600 rounded-full mr-4"></div>
 					<h3 className="font-bold text-xl bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">
-						BASIC INFORMATION
+						{t('Binfo')}
 					</h3>
 					</div>
 		
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					<div>
-						<label className="block text-orange-200 font-semibold mb-2">Character Name *</label>
+						<label className="block text-orange-200 font-semibold mb-2">{t('Cname')}</label>
 						<input 
 						type="text"
 						name="name"
@@ -219,7 +221,7 @@ const Add = () => {
 						/>
 					</div>
 					<div>
-						<label className="block text-orange-200 font-semibold mb-2">Title *</label>
+						<label className="block text-orange-200 font-semibold mb-2">{t('Ctitle')}</label>
 						<input 
 						type="text"
 						name="title"
@@ -231,7 +233,7 @@ const Add = () => {
 						/>
 					</div>
 					<div>
-						<label className="block text-orange-200 font-semibold mb-2">Role *</label>
+						<label className="block text-orange-200 font-semibold mb-2">{t('Crole')}</label>
 						<select 
 						name="role"
 						value={formData.role}
@@ -239,11 +241,11 @@ const Add = () => {
 						className="w-full bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
 						required
 						>
-						<option value="">Select role</option>
-						<option value="Playable Character">Playable Character</option>
-						<option value="NPC">NPC</option>
-						<option value="Companion">Companion</option>
-						<option value="Villain">Villain</option>
+						<option value="">{t('sr')}</option>
+						<option value="Playable Character">{t('playable')}</option>
+						<option value="NPC">{t('NPC')}</option>
+						<option value="Companion">{t('Companion')}</option>
+						<option value="Villain">{t('Villain')}</option>
 						</select>
 					</div>
 					
@@ -252,7 +254,7 @@ const Add = () => {
 
 				{/* Character Description */}
 				<div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-6 border border-orange-600/30">
-					<label className="block text-orange-200 font-semibold mb-4">Character Description *</label>
+					<label className="block text-orange-200 font-semibold mb-4">{t('Cdesc')}</label>
 					<textarea 
 					name="description"
 					value={formData.description}
@@ -269,7 +271,7 @@ const Add = () => {
 					<div className="flex items-center mb-6">
 					<div className="w-2 h-8 bg-gradient-to-b from-yellow-400 via-orange-500 to-red-600 rounded-full mr-4"></div>
 					<h3 className="font-bold text-xl bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">
-						ABILITIES & TRAITS
+						{t('abilities')}
 					</h3>
 					</div>
 
@@ -288,12 +290,12 @@ const Add = () => {
 						onClick={handleAddAbility}
 						className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-3 rounded-lg border border-orange-400/50 hover:from-red-500 hover:to-orange-500 transition-all"
 						>
-						Add Ability
+						{t('addA')}
 						</button>
 					</div>
 					<div className="bg-slate-800/60 rounded-lg p-4 min-h-12">
 						{formData.abilities.length === 0 ? (
-						<p className="text-orange-300 text-sm">Added abilities will appear here...</p>
+						<p className="text-orange-300 text-sm">{t('appearHere')}</p>
 						) : (
 						<div className="flex flex-wrap gap-2">
 							{formData.abilities.map((ability, index) => (
@@ -319,7 +321,7 @@ const Add = () => {
 
 				{/* Image Upload */}
 				<div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-6 border border-orange-600/30">
-					<label className="block text-orange-200 font-semibold mb-4">Character Image</label>
+					<label className="block text-orange-200 font-semibold mb-4">{t('charaimg')}</label>
 					<div 
 					className="border-2 border-dashed border-orange-600/30 rounded-lg p-8 text-center hover:border-orange-400/50 transition-all cursor-pointer"
 					onClick={() => document.getElementById('image-upload').click()}
@@ -327,12 +329,12 @@ const Add = () => {
 					{imagePreview ? (
 						<div className="space-y-4">
 						<img src={imagePreview} alt="Preview" className="max-h-64 mx-auto rounded-lg" />
-						<p className="text-orange-300 text-sm">Click to change image</p>
+						<p className="text-orange-300 text-sm">{t('clickimg')}</p>
 						</div>
 					) : (
 						<>
-						<div className="text-orange-300 mb-2">Click to upload character image or drag and drop</div>
-						<div className="text-orange-400/60 text-sm">PNG, JPG up to 10MB</div>
+						<div className="text-orange-300 mb-2">{t('clickdrag')}</div>
+						<div className="text-orange-400/60 text-sm">{t('png')}</div>
 						</>
 					)}
 					<input 
@@ -352,13 +354,13 @@ const Add = () => {
 					onClick={handleCancel}
 					className="bg-slate-700/80 hover:bg-slate-600/80 text-orange-200 font-bold py-4 px-8 rounded-full border border-orange-600/30 transition-all"
 					>
-					Cancel
+					{t('cancel')}
 					</button>
 					<button 
 					type="submit"
 					className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-bold py-4 px-12 rounded-full border border-orange-400/50 shadow-2xl transition-all transform hover:scale-105"
 					>
-					Add Character to Wiki
+					{t('addcharatowiki')}
 					</button>
 				</div>
 				</form>

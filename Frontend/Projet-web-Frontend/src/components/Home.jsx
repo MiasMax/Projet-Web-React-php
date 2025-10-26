@@ -1,9 +1,10 @@
 import { silksongData } from '../todelete/silksongData'
 import { Link } from 'react-router-dom'
 import { API_URL_IMG } from '../App';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-const { gameInfo } = silksongData
+	const { t } = useTranslation();
 
 return (
 	<div className="container mx-auto px-4 py-8 pt-36 pb-20">
@@ -11,24 +12,24 @@ return (
 	{/* Hero Section */}
 		<section className="text-center mb-12">
 			<h1 className="text-5xl font-bold mb-7 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
-			{gameInfo.title}
+			{t('title')}
 			</h1>
 			<p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
-			{gameInfo.description}
+			{t('description')}
 			</p>
 			<div className="bg-gray-800 rounded-lg p-6 max-w-2xl mx-auto">
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
 				<div className="bg-gray-700 p-4 rounded">
-				<p className="text-yellow-400 font-semibold">Status</p>
-				<p className="text-green-400">{gameInfo.releaseStatus}</p>
+				<p className="text-yellow-400 font-semibold">{t('status')}</p>
+				<p className="text-green-400">{t('statusValue')}</p>
 				</div>
 				<div className="bg-gray-700 p-4 rounded">
-				<p className="text-yellow-400 font-semibold">Developer</p>
-				<p className="text-gray-300">{gameInfo.developer}</p>
+				<p className="text-yellow-400 font-semibold">{t('developer')}</p>
+				<p className="text-gray-300">{t('developerValue')}</p>
 				</div>
 				<div className="bg-gray-700 p-4 rounded">
-				<p className="text-yellow-400 font-semibold">Platforms</p>
-				<p className="text-gray-300">{gameInfo.platforms.join(', ')}</p>
+				<p className="text-yellow-400 font-semibold">{t('platforms')}</p>
+				<p className="text-gray-300">{t('platformsValue')}</p>
 				</div>
 			</div>
 			</div>
@@ -48,13 +49,13 @@ return (
 				/>
 			</div>
 			<h2 className="text-2xl font-bold mb-2 text-yellow-400 group-hover:text-yellow-300">
-				Characters
+				{t('charactersTitle')}
 			</h2>
 			<p className="text-gray-300">
-				Explore the diverse cast of characters you'll meet in the kingdom of Pharloom.
+				{t('charactersDescription')}
 			</p>
 			<div className="mt-4 text-yellow-400 group-hover:text-yellow-300">
-				View {silksongData.characters.length} characters →
+				{t('charactersLink')}
 			</div>
 			</Link>
 
@@ -70,20 +71,20 @@ return (
 				/>
 			</div>
 			<h2 className="text-2xl font-bold mb-2 text-red-400 group-hover:text-red-300">
-				Bosses
+				{t('bossesTitle')}
 			</h2>
 			<p className="text-gray-300">
-				Discover the formidable bosses that await Hornet in her journey.
+				{t('bossesDescription')}
 			</p>
 			<div className="mt-4 text-red-400 group-hover:text-red-300">
-				View {silksongData.bosses.length} bosses →
+				{t('bossesLink')}
 			</div>
 			</Link>
 		</section>
 
 		{/* Features Preview */}
 		<section className="mt-16 max-w-4xl mx-auto">  <h2 className="mb-8 text-4xl font-bold text-center text-white drop-shadow-lg">
-    What to Expect
+    {t('sectionTitle')}
   </h2>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
@@ -94,8 +95,8 @@ return (
 							className="w-12 h-12 rounded-full border-2 border-pink-400 object-cover"
 						/>
 					</div>
-					<h3 className="text-pink-400 text-xl font-semibold mb-2">New Protagonist</h3>
-					<p className="text-gray-300">Play as Hornet with her unique silk-based abilities and combat style.</p>
+					<h3 className="text-pink-400 text-xl font-semibold mb-2">{t('feature1Title')}</h3>
+					<p className="text-gray-300">{t('feature1Description')}</p>
 				</div>
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
@@ -105,8 +106,8 @@ return (
 							className="w-12 h-12 rounded-full border-2 border-yellow-300 object-cover"
 						/>
 					</div>
-					<h3 className="text-yellow-300 text-xl font-semibold mb-2">New Kingdom</h3>
-					<p className="text-gray-300">Explore the vast, haunted kingdom of Pharloom with all-new areas to discover.</p>
+					<h3 className="text-yellow-300 text-xl font-semibold mb-2">{t('feature2Title')}</h3>
+					<p className="text-gray-300">{t('feature2Description')}</p>
 				</div>
 				<div className="bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
@@ -116,8 +117,8 @@ return (
 							className="w-12 h-12 rounded-full border-2 border-red-400 object-cover"
 						/>
 					</div>
-					<h3 className="text-red-400 text-xl font-semibold mb-2">Challenging Combat</h3>
-					<p className="text-gray-300">Face over 150 new enemies and formidable bosses in intense combat encounters.</p>
+					<h3 className="text-red-400 text-xl font-semibold mb-2">{t('feature3Title')}</h3>
+					<p className="text-gray-300">{t('feature3Description')}</p>
 				</div>
 			</div>
 		</section>
@@ -125,7 +126,7 @@ return (
 		<section className="mt-16 max-w-4xl mx-auto">
 			
 			<div className="bg-gradient-to-br from-orange-600/30 via-red-500/30 to-amber-600/30 rounded-2xl p-8 shadow-2xl backdrop-blur-sm border border-orange-400/20">
-				<h2 className="text-4xl font-bold text-center text-white drop-shadow-lg">Add to the Wiki?</h2>
+				<h2 className="text-4xl font-bold text-center text-white drop-shadow-lg">{t('wikiTitle')}</h2>
 			
 				<div className="flex flex-col sm:flex-row gap-4 justify-center items-center p-6">
 					{/* Add Boss Button - Simple */}
@@ -139,7 +140,7 @@ return (
 							<div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-orange-300/80">
 								<span className="text-xl">🔥</span>
 							</div>
-							<h3 className="text-xl font-bold text-white mb-1">Add New Character</h3>
+							<h3 className="text-xl font-bold text-white mb-1">{t('addCharacterButton')}</h3>
 							</div>
 						</button>
 					</Link>
@@ -154,7 +155,7 @@ return (
 							<div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-purple-300/80">
 								<span className="text-xl">⚡</span>
 							</div>
-							<h3 className="text-xl font-bold text-white mb-1">Add New Boss</h3>
+							<h3 className="text-xl font-bold text-white mb-1">{t('addBossButton')}</h3>
 							</div>
 						</button>
 					</Link>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { API_URL_IMG, API_URL } from '../App';
+import { useTranslation } from 'react-i18next';
 
 const Characters = () => {
+	const { t } = useTranslation();
 
 	const [charactersList, setCharactersList] = useState([]); // Initialize state
 
@@ -23,9 +25,9 @@ const Characters = () => {
 
 	return (
 		<div className="container mx-auto px-4 py-8 pt-36 pb-20">
-			<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">Characters</h1>
+			<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">{t('Characters')}</h1>
 			<p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
-				Meet the inhabitants of Pharloom - allies, enemies, and mysterious figures you'll encounter in your journey.
+				{t('CharactersText')}
 			</p>
 			
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -68,7 +70,7 @@ const Characters = () => {
 						<div className="flex items-center mb-5">
 							<div className="w-2 h-8 bg-gradient-to-b from-yellow-400 via-orange-500 to-red-600 rounded-full mr-4"></div>
 							<h3 className="font-bold text-xl tracking-wide bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent">
-							ABILITIES & TRAITS
+							{t('abilities')}
 							</h3>
 						</div>
 						<ul className="space-y-3">

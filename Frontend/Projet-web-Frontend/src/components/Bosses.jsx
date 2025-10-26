@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { API_URL_IMG, API_URL } from '../App';
+import { useTranslation } from 'react-i18next';
 
 const Bosses = () => {
+	const { t } = useTranslation();
 
 	const getDifficultyColor = (difficulty) => {
 		switch (difficulty) {
@@ -34,9 +36,9 @@ const Bosses = () => {
 
   return (
 	<div className="container mx-auto px-4 py-8 pt-36 pb-20">
-		<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">Bosses</h1>
+		<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">{t('bossesTitle')}</h1>
 		<p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
-			Face the formidable guardians and powerful foes that stand between Hornet and her destiny.
+			{t('BossesText')}
 		</p>
 		
 		<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -76,7 +78,7 @@ const Bosses = () => {
 							<div className="flex items-center bg-gray-900/50 rounded-lg p-4 border border-gray-700">
 							<span className="text-gray-400 font-medium mr-3">📍</span>
 							<div>
-								<span className="text-gray-400 text-sm block">Location</span>
+								<span className="text-gray-400 text-sm block">{t('Location')}</span>
 								<span className="text-yellow-300 font-semibold text-lg">{boss.location}</span>
 							</div>
 							</div>
@@ -92,7 +94,7 @@ const Bosses = () => {
 							<div className="bg-gray-900/50 rounded-xl p-5 border border-red-900/30">
 								<div className="flex items-center mb-4">
 								<div className="w-2 h-6 bg-red-500 rounded-full mr-3"></div>
-								<h3 className="font-bold text-red-400 text-xl">Attacks</h3>
+								<h3 className="font-bold text-red-400 text-xl">{t('Attacks')}</h3>
 								</div>
 								<ul className="space-y-3">
 								{boss.attacks.map((attack, index) => (
@@ -108,7 +110,7 @@ const Bosses = () => {
 							<div className="bg-gray-900/50 rounded-xl p-5 border border-green-900/30">
 								<div className="flex items-center mb-4">
 								<div className="w-2 h-6 bg-green-500 rounded-full mr-3"></div>
-								<h3 className="font-bold text-green-400 text-xl">Rewards</h3>
+								<h3 className="font-bold text-green-400 text-xl">{t('Rewards')}</h3>
 								</div>
 								<ul className="space-y-3">
 								{boss.rewards.map((reward, index) => (

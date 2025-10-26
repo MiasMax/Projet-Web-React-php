@@ -1,8 +1,10 @@
 import React from 'react';
 import { API_URL_IMG, API_URL } from '../App';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Add = () => {
+	const { t } = useTranslation();
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -135,19 +137,19 @@ const Add = () => {
 
 		alert('Boss added successfully!');
 
-		// setFormData({
-		// 	name: '',
-		// 	title: '',
-		// 	location: '',
-		// 	difficulty: '',
-		// 	description: '',
-		// 	attacks: [],
-		// 	rewards: [],
-		// 	image: null
-		// });
-		// setCurrentAttack('');
-		// setCurrentReward('');
-		// setImagePreview(null);
+		setFormData({
+			name: '',
+			title: '',
+			location: '',
+			difficulty: '',
+			description: '',
+			attacks: [],
+			rewards: [],
+			image: null
+		});
+		setCurrentAttack('');
+		setCurrentReward('');
+		setImagePreview(null);
 		} catch (error) {
 		console.error('Error submitting form:', error);
 		alert('Error adding boss. Please try again.');
@@ -180,16 +182,16 @@ const Add = () => {
 			{/* Form Header */}
 			<div className="text-center mb-8">
 			<h1 className="text-5xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent mb-4">
-				Add New Boss
+				{t('addBossButton')}
 			</h1>
-			<p className="text-blue-200 text-lg">Contribute to the boss encyclopedia</p>
+			<p className="text-blue-200 text-lg">{t('contribteboss')}</p>
 			</div>
 
 			{/* Main Form Card */}
 			<div className="bg-slate-900/80 rounded-2xl overflow-hidden shadow-2xl border border-blue-600/40 backdrop-blur-sm">
 			<div className="bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-800 p-8 relative overflow-hidden">
 				<div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-500/10 to-indigo-400/5 mix-blend-overlay"></div>
-				<h2 className="text-3xl font-bold text-blue-100 relative z-10 text-center">Boss Information</h2>
+				<h2 className="text-3xl font-bold text-blue-100 relative z-10 text-center">{t('binfo')}</h2>
 			</div>
 
 			<div className="p-8 space-y-6 bg-gradient-to-b from-slate-900/90 to-slate-800/90">
@@ -201,13 +203,13 @@ const Add = () => {
 					<div className="flex items-center mb-6">
 						<div className="w-2 h-8 bg-gradient-to-b from-blue-400 via-purple-500 to-indigo-600 rounded-full mr-4"></div>
 						<h3 className="font-bold text-xl bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-						BASIC INFORMATION
+						{t('Binfo')}
 						</h3>
 					</div>
 					
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 						<div>
-						<label className="block text-blue-200 font-semibold mb-2">Boss Name *</label>
+						<label className="block text-blue-200 font-semibold mb-2">{t('bname')}</label>
 						<input 
 							type="text" 
 							name="name"
@@ -219,7 +221,7 @@ const Add = () => {
 						/>
 						</div>
 						<div>
-						<label className="block text-blue-200 font-semibold mb-2">Title *</label>
+						<label className="block text-blue-200 font-semibold mb-2">{t('Ctitle')}</label>
 						<input 
 							type="text" 
 							name="title"
@@ -231,7 +233,7 @@ const Add = () => {
 						/>
 						</div>
 						<div>
-						<label className="block text-blue-200 font-semibold mb-2">Location *</label>
+						<label className="block text-blue-200 font-semibold mb-2">{t('bloc')}</label>
 						<input 
 							type="text" 
 							name="location"
@@ -243,18 +245,18 @@ const Add = () => {
 						/>
 						</div>
 						<div>
-						<label className="block text-blue-200 font-semibold mb-2">Difficulty *</label>
+						<label className="block text-blue-200 font-semibold mb-2">{t('bdif')}</label>
 						<select 
 						name="difficulty" 
 						value={formData.difficulty}
 						onChange={handleInputChange}
 						required
 						className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all">
-							<option value="">Select difficulty</option>
-							<option value="Easy" className="bg-slate-800">Easy</option>
-							<option value="Medium" className="bg-slate-800">Medium</option>
-							<option value="Hard" className="bg-slate-800">Hard</option>
-							<option value="Extreme" className="bg-slate-800">Extreme</option>
+							<option value="">{t('Selectdifficulty')}</option>
+							<option value="Easy" className="bg-slate-800">{t('Easy')}</option>
+							<option value="Medium" className="bg-slate-800">{t('Medium')}</option>
+							<option value="Hard" className="bg-slate-800">{t('Hard')}</option>
+							<option value="Extreme" className="bg-slate-800">{t('Extreme')}</option>
 						</select>
 						</div>
 					</div>
@@ -262,7 +264,7 @@ const Add = () => {
 
 					{/* Boss Description */}
 					<div className="bg-gradient-to-r from-blue-900/40 to-purple-900/30 rounded-xl p-6 border border-blue-600/30">
-					<label className="block text-blue-200 font-semibold mb-4">Boss Description *</label>
+					<label className="block text-blue-200 font-semibold mb-4">{t('bdescr')}</label>
 					<textarea 
 						rows="4"
 						name="description"
@@ -279,7 +281,7 @@ const Add = () => {
 					<div className="flex items-center mb-6">
 						<div className="w-2 h-8 bg-gradient-to-b from-blue-400 via-purple-500 to-indigo-600 rounded-full mr-4"></div>
 						<h3 className="font-bold text-xl bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-						ATTACKS
+						{t('ATTACKS')}
 						</h3>
 					</div>
 
@@ -298,12 +300,12 @@ const Add = () => {
 							onClick={handleAddAttack}
 							className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg border border-blue-400/50 hover:from-blue-500 hover:to-purple-500 transition-all"
 						>
-							Add Attack
+							{t('AddAttack')}
 						</button>
 						</div>
 						<div className="bg-slate-800/60 rounded-lg p-4 min-h-12">
 						{formData.attacks.length === 0 ? (
-							<p className="text-blue-300 text-sm">Added attacks will appear here...</p>
+							<p className="text-blue-300 text-sm">{t('addedattac')}</p>
 						) : (
 							<div className="flex flex-wrap gap-2">
 							{formData.attacks.map((attack, index) => (
@@ -332,7 +334,7 @@ const Add = () => {
 					<div className="flex items-center mb-6">
 						<div className="w-2 h-8 bg-gradient-to-b from-blue-400 via-purple-500 to-indigo-600 rounded-full mr-4"></div>
 						<h3 className="font-bold text-xl bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
-						REWARDS
+						{t('REWARDS')}
 						</h3>
 					</div>
 
@@ -351,12 +353,12 @@ const Add = () => {
 							onClick={handleAddReward}
 							className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg border border-blue-400/50 hover:from-blue-500 hover:to-purple-500 transition-all"
 						>
-							Add Reward
+							{t('addReward')}
 						</button>
 						</div>
 						<div className="bg-slate-800/60 rounded-lg p-4 min-h-12">
 						{formData.rewards.length === 0 ? (
-							<p className="text-blue-300 text-sm">Added rewards will appear here...</p>
+							<p className="text-blue-300 text-sm">{t('addedreward')}</p>
 						) : (
 							<div className="flex flex-wrap gap-2">
 							{formData.rewards.map((reward, index) => (
@@ -382,7 +384,7 @@ const Add = () => {
 
 										{/* Image Upload */}
 					<div className="bg-gradient-to-r from-blue-900/40 to-purple-900/30 rounded-xl p-6 border border-blue-600/30">
-					<label className="block text-blue-200 font-semibold mb-4">Character Image</label>
+					<label className="block text-blue-200 font-semibold mb-4">{t('bimg')}</label>
 					<div 
 						className="border-2 border-dashed border-blue-600/30 rounded-lg p-8 text-center hover:border-blue-400/50 transition-all cursor-pointer"
 						onClick={() => document.getElementById('image-upload').click()}
@@ -390,12 +392,12 @@ const Add = () => {
 						{imagePreview ? (
 						<div className="space-y-4">
 							<img src={imagePreview} alt="Preview" className="max-h-64 mx-auto rounded-lg" />
-							<p className="text-blue-300 text-sm">Click to change image</p>
+							<p className="text-blue-300 text-sm">{t('clickimg')}</p>
 						</div>
 						) : (
 						<>
-							<div className="text-blue-300 mb-2">Click to upload character image or drag and drop</div>
-							<div className="text-blue-400/60 text-sm">PNG, JPG up to 10MB</div>
+							<div className="text-blue-300 mb-2">{t('clickdrag')}</div>
+							<div className="text-blue-400/60 text-sm">{t('png')}</div>
 						</>
 						)}
 						<input 
@@ -411,10 +413,10 @@ const Add = () => {
 					{/* Submit Buttons */}
 					<div className="flex justify-center gap-4 pt-4">
 					<button type="button" className="bg-slate-700/80 hover:bg-slate-600/80 text-blue-200 font-bold py-4 px-8 rounded-full border border-blue-600/30 transition-all">
-						Cancel
+						{t('cancel')}
 					</button>
 					<button type="submit" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-4 px-12 rounded-full border border-blue-400/50 shadow-2xl transition-all transform hover:scale-105">
-						Add Boss to Wiki
+						{t('addbosstowiki')}
 					</button>
 					</div>
 					</form>

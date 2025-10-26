@@ -4,12 +4,15 @@ import Characters from './components/Characters'
 import Bosses from './components/Bosses'
 import AddBosses from './components/AddBosses'
 import AddCharacters from './components/AddCharacters'
+import LanguageSwitcher from './components/LanguageSwitcher'
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 export const API_URL_IMG = 'http://localhost/public/images/';
 export const API_URL = 'http://localhost/';
 
 function App() {
 
+	const { t } = useTranslation();	
 	const [isVisible, setIsVisible] = useState(true);
 	const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -42,24 +45,31 @@ return (
 			style={{
 				backgroundImage: `url('${API_URL_IMG}game.png')`,
 			}}
-		/>
+		/>		
+						<div className="relative z-10 flex justify-end">
+								<LanguageSwitcher />
+							</div>
 
 			{/* nav */}
 			<nav className={`fixed top-0 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-sm shadow-lg transition-transform duration-300 ${
 				isVisible ? 'translate-y-0' : '-translate-y-full'
 				}`}>
+
 				<div className="container mx-auto px-4">
-					<div className="flex justify-between items-center py-4">
+					<div className="flex justify-between items-center py-4">		
+						
 					<Link to="/" >
 						<p className="text-2xl font-bold bg-gradient-to-r from-red-400 to-yellow-600 bg-clip-text text-transparent hover:text-yellow-300 transition-colors">
-						Silksong Wiki
+						{t('mainTitle')}
 						</p></Link>
+							
+
 					<div className="space-x-6">
 						<Link 
 						to="/" 
 						className="text-gray-300 hover:text-white transition-colors font-medium"
 						>
-						Home
+						{t('home')}
 						</Link>
 						<Link 
 						to="/characters" 
@@ -77,13 +87,13 @@ return (
 						to="/addcharacters" 
 						className="text-gray-300 hover:text-white transition-colors font-medium"
 						>
-						Add new Characters
+						{t('addChara')}
 						</Link>
 						<Link 
 						to="/addbosses" 
 						className="text-gray-300 hover:text-white transition-colors font-medium"
 						>
-						Add New Bosses
+						{t('addBoss')}
 						</Link>
 					</div>
 					</div>
@@ -104,8 +114,8 @@ return (
 			{/* Footer */}
 			<footer className="bg-gray-800 border-t border-gray-700 py-8">
 				<div className="container mx-auto px-4 text-center text-gray-400">
-				<p>Silksong Wiki - Fan-made website for Hollow Knight: Silksong</p>
-				<p className="mt-2">This is not an official Team Cherry website</p>
+				<p>{t('footer')}</p>
+				<p className="mt-2">{t('disclaimer')}</p>
 				</div>
 			</footer>
 		</div>
