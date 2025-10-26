@@ -69,11 +69,12 @@ class BossController {
 			$attacks = $data['attacks'] ?? [];
 			$rewards = $data['rewards'] ?? [];
 			$image = $data['image'];
+			$lang = $data['lang'];
 
 			$attacksJson = json_encode($attacks);
 			$rewardsJson = json_encode($rewards);
 			
-			$result = $this->bossModel->insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image);
+			$result = $this->bossModel->insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image,$lang);
 
 			echo json_encode([
 				'success' => true,
@@ -85,7 +86,8 @@ class BossController {
 					'difficulty' => $difficulty,
 					'description' => $description,
 					'attacks' => $attacksJson,
-					'rewards' => $rewardsJson
+					'rewards' => $rewardsJson,
+					'lang' => $lang
 				]
 			]);
 		

@@ -27,12 +27,12 @@ class BossModel {
 		return $result;
 	}
 
-	public function insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image) {
+	public function insertboss($name,$title,$location,$difficulty,$description,$attacksJson,$rewardsJson,$image, $lang) {
 		
 		$id = $this->getLastId();
 
-		$query = "INSERT INTO bosses (id, name, title, location, difficulty, description, attacks, rewards, image) 
-				VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) 
+		$query = "INSERT INTO bosses (id, name, title, location, difficulty, description, attacks, rewards, image, lang) 
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
 				RETURNING id";
 
 		$result = pg_query_params($this->conn, $query, [
@@ -44,7 +44,8 @@ class BossModel {
 			$description,
 			$attacksJson,
 			$rewardsJson,
-			$image
+			$image, 
+			$lang
 		]);
 
 		if ($result) {

@@ -2,9 +2,30 @@ import React from 'react';
 import { API_URL_IMG, API_URL } from '../App';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Popup from './popup';
 
 const Add = () => {
-	const { t } = useTranslation();
+	const { t,i18n } = useTranslation();
+
+	
+	const [popupConfig, setPopupConfig] = useState({
+		isOpen: false,
+		title: '',
+		text: ''
+	});
+
+	const showPopup = (title, text) => {
+		setPopupConfig({
+		isOpen: true,
+		title,
+		text
+		});
+	};
+
+	const hidePopup = () => {
+		setPopupConfig(prev => ({ ...prev, isOpen: false }));
+	};
+	
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -120,7 +141,8 @@ const Add = () => {
 			description: formData.description,
 			attacks: formData.attacks,
 			rewards: formData.rewards,
-			image: slugifyfilename
+			image: slugifyfilename,
+			lang: i18n.language,
 		};
 
 		const response = await fetch(`${API_URL}api/bosses/insert`, {
@@ -157,6 +179,12 @@ const Add = () => {
 
   return (
 	<div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/50 to-purple-900/30 pt-36 pb-20">
+			<Popup
+				title={popupConfig.title}
+				text={popupConfig.text}
+				isOpen={popupConfig.isOpen}
+				onClose={hidePopup}
+				/>
 		<div className="max-w-4xl mx-auto">
 			{/* Form Header */}
 			<div className="text-center mb-8">

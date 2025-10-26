@@ -83,8 +83,6 @@ const Add = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		
-		console.log(i18n.language);//language
 
 		// Validation
 		if (!formData.name || !formData.title || !formData.role || !formData.description) {
@@ -112,6 +110,7 @@ const Add = () => {
 				description: formData.description,
 				abilities: formData.abilities,  // Send array directly, no JSON.stringify needed
 				image: slugifyfilename,
+				lang: i18n.language,
 			};
 
 			// Send POST request to your backend
@@ -204,12 +203,14 @@ const Add = () => {
 
 	return (
 		
-		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900/50 to-orange-900/30 pt-36 pb-20 px-4">    <Popup
-      title={popupConfig.title}
-      text={popupConfig.text}
-      isOpen={popupConfig.isOpen}
-      onClose={hidePopup}
-    />
+		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900/50 to-orange-900/30 pt-36 pb-20 px-4">    
+			
+			<Popup
+				title={popupConfig.title}
+				text={popupConfig.text}
+				isOpen={popupConfig.isOpen}
+				onClose={hidePopup}
+				/>
 		<div className="max-w-4xl mx-auto">
 			{/* Form Header */}
 			<div className="text-center mb-8">

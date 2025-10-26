@@ -67,10 +67,11 @@ class CharacterController {
 			$description = $data['description'] ?? '';
 			$abilities = $data['abilities'] ?? [];
 			$image = $data['image'];
+			$lang = $data['lang'];
 
 			$abilitiesJson = json_encode($abilities);
 			
-			$result = $this->characterModel->insertCharacter($name,$title,$role,$description,$abilitiesJson,$image);
+			$result = $this->characterModel->insertCharacter($name,$title,$role,$description,$abilitiesJson,$image,$lang);
 
 			echo json_encode([
 				'success' => true,
@@ -81,7 +82,8 @@ class CharacterController {
 					'role' => $role,
 					'origin' => $origin,
 					'description' => $description,
-					'abilities' => $abilitiesJson
+					'abilities' => $abilitiesJson,
+					'lang' => $lang
 				]
 			]);
 		

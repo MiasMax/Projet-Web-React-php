@@ -27,12 +27,12 @@ class CharacterModel {
 		return $result;
 	}
 
-	public function insertCharacter($name, $title, $role, $description, $abilities, $image) {
+	public function insertCharacter($name, $title, $role, $description, $abilities, $image, $lang) {
 
 		$id = $this->getLastId();
 
-		$query = "INSERT INTO characters (id, name, title, description, abilities, image, role) 
-				VALUES ($1, $2, $3, $4, $5, $6, $7) 
+		$query = "INSERT INTO characters (id, name, title, description, abilities, image, role, lang) 
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
 				RETURNING id";
 
 		$result = pg_query_params($this->conn, $query, [
@@ -42,7 +42,8 @@ class CharacterModel {
 			$description,
 			$abilities,
 			$image,
-			$role
+			$role,
+			$lang
 		]);
 
 		if ($result) {
