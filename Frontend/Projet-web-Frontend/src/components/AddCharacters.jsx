@@ -2,9 +2,28 @@ import React from 'react';
 import { API_URL_IMG, API_URL } from '../App';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Popup from './popup';
 
 const Add = () => {
-	const { t } = useTranslation();
+	const { t,i18n } = useTranslation();
+
+	const [popupConfig, setPopupConfig] = useState({
+		isOpen: false,
+		title: '',
+		text: ''
+	});
+
+	const showPopup = (title, text) => {
+		setPopupConfig({
+		isOpen: true,
+		title,
+		text
+		});
+	};
+
+	const hidePopup = () => {
+		setPopupConfig(prev => ({ ...prev, isOpen: false }));
+	};
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -65,6 +84,8 @@ const Add = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		
+		console.log(i18n.language);//language
+
 		// Validation
 		if (!formData.name || !formData.title || !formData.role || !formData.description) {
 			alert('Please fill in all required fields');
@@ -74,9 +95,13 @@ const Add = () => {
 		try {
 			
 			const file = document.getElementById("image-upload").files[0];
-			const slugifyfilename = file.name.toLowerCase().replace(/\s+/g, '-');
+			let slugifyfilename = "";
+			if (file) {
+				
+				slugifyfilename = file.name.toLowerCase().replace(/\s+/g, '-');
+			}
 
-			handleUpload(file,slugifyfilename);
+			if (file) await handleUpload(file, slugifyfilename);
 
 			// Prepare form data for submission
 			const submitData = {
@@ -86,7 +111,7 @@ const Add = () => {
 				origin: formData.origin,
 				description: formData.description,
 				abilities: formData.abilities,  // Send array directly, no JSON.stringify needed
-				image: slugifyfilename
+				image: slugifyfilename,
 			};
 
 			// Send POST request to your backend
@@ -111,8 +136,10 @@ const Add = () => {
 				result = await response.text();
 			}
 
-			console.log('Form submitted successfully:', result);
-			alert('Character added successfully!');
+			showPopup(
+				"Success!", 
+				t('popupchara')
+			);	
 			
 			// Reset form after successful submission
 			setFormData({
@@ -175,10 +202,14 @@ const Add = () => {
 		}
 	};
 
-
-	
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900/50 to-orange-900/30 pt-36 pb-20 px-4">
+		
+		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900/50 to-orange-900/30 pt-36 pb-20 px-4">    <Popup
+      title={popupConfig.title}
+      text={popupConfig.text}
+      isOpen={popupConfig.isOpen}
+      onClose={hidePopup}
+    />
 		<div className="max-w-4xl mx-auto">
 			{/* Form Header */}
 			<div className="text-center mb-8">

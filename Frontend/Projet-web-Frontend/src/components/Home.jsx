@@ -1,4 +1,3 @@
-import { silksongData } from '../todelete/silksongData'
 import { Link } from 'react-router-dom'
 import { API_URL_IMG } from '../App';
 import { useTranslation } from 'react-i18next';

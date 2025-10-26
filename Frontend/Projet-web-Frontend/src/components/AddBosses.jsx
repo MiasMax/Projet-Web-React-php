@@ -123,19 +123,18 @@ const Add = () => {
 			image: slugifyfilename
 		};
 
-		console.log(submitData)
-
 		const response = await fetch(`${API_URL}api/bosses/insert`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(submitData)
 		});
 
-		console.log(response);
-
 		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-		alert('Boss added successfully!');
+		showPopup(
+			"Success!", 
+			t('popupboss')
+		);	
 
 		setFormData({
 			name: '',
@@ -152,29 +151,9 @@ const Add = () => {
 		setImagePreview(null);
 		} catch (error) {
 		console.error('Error submitting form:', error);
-		alert('Error adding boss. Please try again.');
+			alert('Error adding boss. Please try again.');
 		}
 	};
-
-	const handleCancel = () => {
-		if (confirm('Are you sure you want to cancel? All data will be lost.')) {
-		setFormData({
-			name: '',
-			title: '',
-			location: '',
-			difficulty: '',
-			description: '',
-			attacks: [],
-			rewards: [],
-			image: null
-		});
-		setCurrentAttack('');
-		setCurrentReward('');
-		setImagePreview(null);
-		}
-	};
-
-
 
   return (
 	<div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/50 to-purple-900/30 pt-36 pb-20">
