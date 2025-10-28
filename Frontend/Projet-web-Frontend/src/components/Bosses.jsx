@@ -8,10 +8,10 @@ const Bosses = () => {
 
 	const getDifficultyColor = (difficulty) => {
 		switch (difficulty) {
-		case 'Easy': return 'text-green-400';
-		case 'Medium': return 'text-yellow-400';
-		case 'Hard': return 'text-orange-400';
-		case 'Very Hard': return 'text-red-400';
+		case t('Easy'): return 'text-green-400';
+		case t('Medium'): return 'text-yellow-400';
+		case t('Hard'): return 'text-orange-400';
+		case t('Extreme'): return 'text-red-400';
 		default: return 'text-black-400';
 		}
 	};

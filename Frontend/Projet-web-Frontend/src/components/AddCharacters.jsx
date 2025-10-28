@@ -175,9 +175,7 @@ const Add = () => {
 			});
 
 			const data = await res.json();
-			if (data.success) {
-				alert(`File uploaded successfully: ${data.path}`);
-			} else {
+			if (!data.success) {
 				alert(`Error: ${data.error}`);
 			}
 		} catch (err) {
