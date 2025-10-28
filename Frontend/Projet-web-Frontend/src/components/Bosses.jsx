@@ -4,7 +4,7 @@ import { API_URL_IMG, API_URL } from '../App';
 import { useTranslation } from 'react-i18next';
 
 const Bosses = () => {
-	const { t } = useTranslation();
+	const { t,i18n } = useTranslation();
 
 	const getDifficultyColor = (difficulty) => {
 		switch (difficulty) {
@@ -17,22 +17,22 @@ const Bosses = () => {
 	};
 
 	const [BossesList, setBossesList] = useState([]); // Initialize state
-  
+
 	useEffect(() => {
-		fetch(`${API_URL}api/bosses`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		}
+		// GET request to fetch bosses by language
+		fetch(`${API_URL}api/bosses?lang=${i18n.language}`)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+			return response.json();
 		})
-		.then(response => response.json())
 		.then(data => {
-		setBossesList(data); // Update state with data
-		console.log(data); // This will show the data
+			setBossesList(data);
+			console.log("Backend response:", data);
 		})
 		.catch(error => console.error('Error:', error));
-	}, []);
-
+	}, [i18n.language]);
 
   return (
 	<div className="container mx-auto px-4 py-8 pt-36 pb-20">

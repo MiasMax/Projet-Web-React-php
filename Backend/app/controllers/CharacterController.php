@@ -38,7 +38,9 @@ class CharacterController {
 
 	public function getjson() {
 
-		$result = $this->characterModel->getAllCharacters();
+		$lang = $_GET['lang'] ?? '';
+
+		$result = $this->characterModel->getAllCharacters($lang);
 
 		$characters = [];
 
@@ -48,7 +50,8 @@ class CharacterController {
 		}
 
 		echo json_encode($characters);
-		return json_encode($characters);
+		// return json_encode($characters);
+		return 'caca';
 	}
 
 	public function insert() {

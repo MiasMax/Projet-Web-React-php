@@ -37,7 +37,9 @@ class BossController {
 
 	public function getjson() {
 
-		$result = $this->bossModel->getAllbosses();
+		$lang = $_GET['lang'] ?? '';
+
+		$result = $this->bossModel->getAllbosses($lang);
 
 		$bosses = [];
 

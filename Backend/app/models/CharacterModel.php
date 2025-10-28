@@ -18,9 +18,9 @@ class CharacterModel {
 		return $row['id'] + 1;
 	}
 
-	public function getAllCharacters() {
+	public function getAllCharacters($lang) {
 
-		$query = "SELECT * FROM characters";
+		$query = "SELECT * FROM characters WHERE lang = '$lang'";
 
 		$result = pg_query($this->conn, $query);
 		

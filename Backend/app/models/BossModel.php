@@ -18,9 +18,9 @@ class BossModel {
 		return $row['id'] + 1;
 	}
 
-	public function getAllbosses() {
+	public function getAllbosses($lang) {
 
-		$query = "SELECT * FROM bosses";
+		$query = "SELECT * FROM bosses WHERE lang = '$lang'";
 
 		$result = pg_query($this->conn, $query);
 		
