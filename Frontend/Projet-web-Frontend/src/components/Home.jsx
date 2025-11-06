@@ -13,7 +13,7 @@ return (
 			<h1 className="text-5xl font-bold mb-7 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
 			{t('title')}
 			</h1>
-			<p className="text-xl text-gray-200 mb-6 max-w-2xl mx-auto">
+			<p className="text-xl text-gray-900 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
 			{t('description')}
 			</p>
 			<div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 max-w-2xl mx-auto">

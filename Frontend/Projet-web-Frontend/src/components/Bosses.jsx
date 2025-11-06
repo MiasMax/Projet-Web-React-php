@@ -85,7 +85,7 @@ const Bosses = () => {
 							
 							{/* Description */}
 							<div className="bg-gray-900/30 rounded-lg p-4 border border-gray-700">
-							<p className="text-gray-200 leading-relaxed text-lg">{boss.description}</p>
+							<p className="text-gray-900 dark:text-gray-200 leading-relaxed text-lg">{boss.description}</p>
 							</div>
 							
 							{/* Attacks & Rewards Grid */}
@@ -98,7 +98,7 @@ const Bosses = () => {
 								</div>
 								<ul className="space-y-3">
 								{boss.attacks.map((attack, index) => (
-									<li key={index} className="text-gray-200 flex items-start group hover:translate-x-1 transition-transform">
+									<li key={index} className="text-gray-900 dark:text-gray-200 flex items-start group hover:translate-x-1 transition-transform">
 									<span className="text-red-400 mr-3 mt-1 text-lg">⚔️</span>
 									<span className="leading-relaxed group-hover:text-white transition-colors">{attack}</span>
 									</li>
@@ -114,7 +114,7 @@ const Bosses = () => {
 								</div>
 								<ul className="space-y-3">
 								{boss.rewards.map((reward, index) => (
-									<li key={index} className="text-gray-200 flex items-start group hover:translate-x-1 transition-transform">
+									<li key={index} className="text-gray-900 dark:text-gray-200 flex items-start group hover:translate-x-1 transition-transform">
 									<span className="text-green-400 mr-3 mt-1 text-lg">🎁</span>
 									<span className="leading-relaxed group-hover:text-white transition-colors">{reward}</span>
 									</li>

@@ -34,7 +34,19 @@ const Characters = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 				{charactersList.map(character => (
 
-					<div key={character.id} className="bg-slate-900/80 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 border border-red-600/40 backdrop-blur-sm">
+					<div 
+						key={character.id} 
+						className="
+							bg-white/80 dark:bg-slate-900/80 
+							rounded-2xl 
+							overflow-hidden 
+							shadow-2xl hover:shadow-3xl 
+							hover:scale-[1.02] 
+							transition-all duration-300 
+							border border-red-600/40 
+							backdrop-blur-sm
+						"
+						>
 					<div className="bg-gradient-to-br from-red-900 via-orange-800 to-yellow-800 p-8 text-center relative overflow-hidden">
 						{/* Lava texture overlay */}
 						<div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-orange-500/10 to-yellow-400/5 mix-blend-overlay"></div>
@@ -62,9 +74,16 @@ const Characters = () => {
 						</div>
 					</div>
 					
-					<div className="p-7 space-y-6 bg-gradient-to-b from-slate-900/90 to-slate-800/90">
+					<div className="
+							p-7 space-y-6 
+							bg-gradient-to-b from-gray-100/90 to-gray-200/90   /* Light mode */
+							dark:from-slate-900/90 dark:to-slate-800/90        /* Dark mode */
+							rounded-xl
+						">
 						<div className="bg-gradient-to-r from-red-900/30 to-orange-900/20 rounded-xl p-5 border-l-4 border-orange-500">
-						<p className="text-orange-50 leading-relaxed text-base font-medium">{character.description}</p>
+						<p className="text-gray-800 dark:text-orange-50 leading-relaxed text-base font-medium">
+						{character.description}
+						</p>
 						</div>
 						
 						<div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-5 border border-orange-600/30">
@@ -79,7 +98,13 @@ const Characters = () => {
 							{character.abilities.map((ability, index) => (
 							<li key={index} className="text-orange-100 flex items-start group ">
 								<div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-								<span className="leading-relaxed font-medium group-hover:text-yellow-100 transition-colors">{ability}</span>
+								<span className="
+								leading-relaxed 
+								font-medium 
+								text-gray-800 dark:text-gray-200 
+								group-hover:text-yellow-500 dark:group-hover:text-yellow-100 
+								transition-colors
+								">{ability}</span>
 							</li>
 							))}
 						</ul>
