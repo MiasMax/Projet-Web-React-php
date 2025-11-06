@@ -225,8 +225,12 @@ const Add = () => {
 				<h2 className="text-3xl font-bold text-orange-100 relative z-10 text-center">{t('info')}</h2>
 			</div>
 
-			<div className="p-8 space-y-6 bg-gradient-to-b from-slate-900/90 to-slate-800/90">
-				<form onSubmit={handleSubmit} className="space-y-6">
+				<div className="
+					p-8 space-y-6 
+					bg-gradient-to-b from-gray-100/90 to-gray-200/90   /* Light mode */
+					dark:from-slate-900/90 dark:to-slate-800/90        /* Dark mode */
+					rounded-xl
+				">	<form onSubmit={handleSubmit} className="space-y-6">
 
 				{/* Basic Info Section */}
 				<div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 rounded-xl p-6 border border-orange-600/30">
@@ -245,7 +249,7 @@ const Add = () => {
 						name="name"
 						value={formData.name}
 						onChange={handleInputChange}
-						className="w-full bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
+						className="w-full bg-gray-300 dark:bg-slate-800/80  border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
 						placeholder="Enter character name"
 						required
 						/>
@@ -257,7 +261,7 @@ const Add = () => {
 						name="title"
 						value={formData.title}
 						onChange={handleInputChange}
-						className="w-full bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
+						className="w-full bg-gray-300 dark:bg-slate-800/80  border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
 						placeholder="e.g., Protector of Hallownest"
 						required
 						/>
@@ -268,7 +272,7 @@ const Add = () => {
 						name="role"
 						value={formData.role}
 						onChange={handleInputChange}
-						className="w-full bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
+						className="w-full bg-gray-300 dark:bg-slate-800/80  border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
 						required
 						>
 						<option value="">{t('sr')}</option>
@@ -290,7 +294,7 @@ const Add = () => {
 					value={formData.description}
 					onChange={handleInputChange}
 					rows="4"
-					className="w-full bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
+					className="w-full bg-gray-300 dark:bg-slate-800/80  border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
 					placeholder="Describe the character's appearance, backstory, and personality..."
 					required
 					></textarea>
@@ -312,7 +316,7 @@ const Add = () => {
 						value={currentAbility}
 						onChange={(e) => setCurrentAbility(e.target.value)}
 						onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAbility())}
-						className="flex-1 bg-slate-800/80 border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
+						className="flex-1 bg-gray-300 dark:bg-slate-800/80  border border-orange-600/30 rounded-lg px-4 py-3 text-orange-100 placeholder-orange-400/60 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
 						placeholder="Enter an ability (e.g., Silk Spear)"
 						/>
 						<button 

@@ -69,31 +69,31 @@ return (
 					<div className="space-x-6">
 						<Link 
 						to="/" 
-						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
 						{t('home')}
 						</Link>
 						<Link 
 						to="/characters" 
-						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
 						Characters
 						</Link>
 						<Link 
 						to="/bosses" 
-						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
 						Bosses
 						</Link>
 						<Link 
 						to="/addcharacters" 
-						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
 						{t('addChara')}
 						</Link>
 						<Link 
 						to="/addbosses" 
-						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
 						{t('addBoss')}
 						</Link>

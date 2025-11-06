@@ -201,8 +201,12 @@ const Add = () => {
 				<h2 className="text-3xl font-bold text-blue-100 relative z-10 text-center">{t('binfo')}</h2>
 			</div>
 
-			<div className="p-8 space-y-6 bg-gradient-to-b from-slate-900/90 to-slate-800/90">
-
+			<div className="
+    p-8 space-y-6 
+    bg-gradient-to-b from-gray-100/90 to-gray-200/90   /* Light mode */
+    dark:from-slate-900/90 dark:to-slate-800/90        /* Dark mode */
+    rounded-xl
+">
 				<form onSubmit={handleSubmit} className="space-y-6">
 
 					{/* Basic Info Section */}
@@ -222,7 +226,7 @@ const Add = () => {
 							name="name"
 							value={formData.name}
 							onChange={handleInputChange}
-							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+							className="w-full bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="Enter boss name"
 							required
 						/>
@@ -234,7 +238,7 @@ const Add = () => {
 							name="title"
 							value={formData.title}
 							onChange={handleInputChange}
-							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+							className="w-full bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="e.g., The Frost Dragon"
 							required
 						/>
@@ -246,7 +250,7 @@ const Add = () => {
 							name="location"
 							value={formData.location}
 							onChange={handleInputChange}
-							className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+							className="w-full bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="e.g., Icepeak Mountain"
 							required
 						/>
@@ -258,7 +262,7 @@ const Add = () => {
 						value={formData.difficulty}
 						onChange={handleInputChange}
 						required
-						className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all">
+						className="w-full bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all">
 							<option value="">{t('Selectdifficulty')}</option>
 							<option value="Easy" className="bg-slate-800">{t('Easy')}</option>
 							<option value="Medium" className="bg-slate-800">{t('Medium')}</option>
@@ -277,7 +281,7 @@ const Add = () => {
 						name="description"
 						value={formData.description} 
 						onChange={handleInputChange} 
-						className="w-full bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
+						className="w-full bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
 						placeholder="Describe the boss's appearance, behavior, and lore..."
 						required
 					></textarea>
@@ -299,7 +303,7 @@ const Add = () => {
 							value={currentAttack}
 							onChange={(e) => setCurrentAttack(e.target.value)}
 							onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAttack())}
-							className="flex-1 bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+							className="flex-1 bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="Enter an attack (e.g., Silk Spear)"
 						/>
 						<button 
@@ -352,7 +356,7 @@ const Add = () => {
 							value={currentReward}
 							onChange={(e) => setCurrentReward(e.target.value)}
 							onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddReward())}
-							className="flex-1 bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+							className="flex-1 bg-gray-200/80 dark:bg-slate-800/80 border border-blue-600/30 rounded-lg px-4 py-3 text-blue-100 placeholder-blue-400/60 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
 							placeholder="Enter a reward (e.g., Frost Crystal)"
 						/>
 						<button 
