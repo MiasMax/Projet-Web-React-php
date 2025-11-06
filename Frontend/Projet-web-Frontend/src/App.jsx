@@ -5,6 +5,7 @@ import Bosses from './components/Bosses'
 import AddBosses from './components/AddBosses'
 import AddCharacters from './components/AddCharacters'
 import LanguageSwitcher from './components/LanguageSwitcher'
+import ThemeToggleButton from './components/ThemeToggleButton'
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 export const API_URL_IMG = 'http://localhost/public/images/';
@@ -46,9 +47,10 @@ return (
 				backgroundImage: `url('${API_URL_IMG}game.png')`,
 			}}
 		/>		
-						<div className="relative z-10 flex justify-end">
-								<LanguageSwitcher />
-							</div>
+		<div className="fixed top-20 right-6 z-50 flex flex-col gap-2 bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 shadow-lg">
+			<LanguageSwitcher />
+			<ThemeToggleButton />
+		</div>
 
 			{/* nav */}
 			<nav className={`fixed top-0 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-sm shadow-lg transition-transform duration-300 ${

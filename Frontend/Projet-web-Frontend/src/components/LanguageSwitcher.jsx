@@ -13,9 +13,8 @@ const LanguageSwitcher = () => {
   ];
 
   return (
-    <div className="fixed top-20 right-6 z-50">
-      <div className="flex flex-col gap-2 bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 shadow-lg">
-        {languages.map((lang) => (
+    <div>
+       {languages.map((lang) => (
           <button
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
@@ -36,8 +35,8 @@ const LanguageSwitcher = () => {
             </span>
           </button>
         ))}
-      </div>
-    </div>
+</div>
+
   );
 };
 
