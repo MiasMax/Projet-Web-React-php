@@ -43,7 +43,7 @@ const Bosses = () => {
 		
 		<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
 			{BossesList.map(boss => (
-					<div key={boss.id} className="bg-gray-800/80 rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-600/50 backdrop-blur-sm">	
+					<div key={boss.id} className="bg-gray-100 dark:bg-gray-800/80 rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-600/50 backdrop-blur-sm">	
 						<div className="bg-gradient-to-r from-red-900 via-purple-800 to-indigo-900 p-6 relative">
 							
 							<div className="flex items-center justify-between">

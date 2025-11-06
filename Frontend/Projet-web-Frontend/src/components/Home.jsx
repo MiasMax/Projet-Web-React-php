@@ -13,22 +13,22 @@ return (
 			<h1 className="text-5xl font-bold mb-7 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
 			{t('title')}
 			</h1>
-			<p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
+			<p className="text-xl text-gray-200 mb-6 max-w-2xl mx-auto">
 			{t('description')}
 			</p>
-			<div className="bg-gray-800 rounded-lg p-6 max-w-2xl mx-auto">
+			<div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 max-w-2xl mx-auto">
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-				<div className="bg-gray-700 p-4 rounded">
+				<div className="bg-gray-200 dark:bg-gray-700 p-4 rounded">
 				<p className="text-yellow-400 font-semibold">{t('status')}</p>
 				<p className="text-green-400">{t('statusValue')}</p>
 				</div>
-				<div className="bg-gray-700 p-4 rounded">
+				<div className="bg-gray-200 dark:bg-gray-700 p-4 rounded">
 				<p className="text-yellow-400 font-semibold">{t('developer')}</p>
-				<p className="text-gray-300">{t('developerValue')}</p>
+				<p className="text-gray-700 dark:text-gray-300">{t('developerValue')}</p>
 				</div>
-				<div className="bg-gray-700 p-4 rounded">
+				<div className="bg-gray-200 dark:bg-gray-700 p-4 rounded">
 				<p className="text-yellow-400 font-semibold">{t('platforms')}</p>
-				<p className="text-gray-300">{t('platformsValue')}</p>
+				<p className="text-gray-700 dark:text-gray-300">{t('platformsValue')}</p>
 				</div>
 			</div>
 			</div>
@@ -38,7 +38,7 @@ return (
 		<section className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 			<Link 
 			to="/characters" 
-			className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors group"
+			className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:bg-gray-200 dark:bg-gray-700 transition-colors group"
 			>
 			<div className="mb-4 flex">
 				<img 
@@ -50,7 +50,7 @@ return (
 			<h2 className="text-2xl font-bold mb-2 text-yellow-400 group-hover:text-yellow-300">
 				{t('charactersTitle')}
 			</h2>
-			<p className="text-gray-300">
+			<p className="text-gray-700 dark:text-gray-300">
 				{t('charactersDescription')}
 			</p>
 			<div className="mt-4 text-yellow-400 group-hover:text-yellow-300">
@@ -60,7 +60,7 @@ return (
 
 			<Link 
 			to="/bosses" 
-			className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors group"
+			className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:bg-gray-200 dark:bg-gray-700 transition-colors group"
 			>
 			<div className="mb-4 flex">
 				<img 
@@ -72,7 +72,7 @@ return (
 			<h2 className="text-2xl font-bold mb-2 text-red-400 group-hover:text-red-300">
 				{t('bossesTitle')}
 			</h2>
-			<p className="text-gray-300">
+			<p className="text-gray-700 dark:text-gray-300">
 				{t('bossesDescription')}
 			</p>
 			<div className="mt-4 text-red-400 group-hover:text-red-300">
@@ -86,7 +86,7 @@ return (
     {t('sectionTitle')}
   </h2>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-				<div className="bg-gray-800 p-6 rounded-lg text-center">
+				<div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
 						<img
 							src={`${API_URL_IMG}hornet.png`}
@@ -95,9 +95,9 @@ return (
 						/>
 					</div>
 					<h3 className="text-pink-400 text-xl font-semibold mb-2">{t('feature1Title')}</h3>
-					<p className="text-gray-300">{t('feature1Description')}</p>
+					<p className="text-gray-700 dark:text-gray-300">{t('feature1Description')}</p>
 				</div>
-				<div className="bg-gray-800 p-6 rounded-lg text-center">
+				<div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
 						<img
 							src={`${API_URL_IMG}start.png`}
@@ -106,9 +106,9 @@ return (
 						/>
 					</div>
 					<h3 className="text-yellow-300 text-xl font-semibold mb-2">{t('feature2Title')}</h3>
-					<p className="text-gray-300">{t('feature2Description')}</p>
+					<p className="text-gray-700 dark:text-gray-300">{t('feature2Description')}</p>
 				</div>
-				<div className="bg-gray-800 p-6 rounded-lg text-center">
+				<div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center">
 					<div className="mb-4 flex justify-center">
 						<img
 							src={`${API_URL_IMG}scary.png`}
@@ -117,7 +117,7 @@ return (
 						/>
 					</div>
 					<h3 className="text-red-400 text-xl font-semibold mb-2">{t('feature3Title')}</h3>
-					<p className="text-gray-300">{t('feature3Description')}</p>
+					<p className="text-gray-700 dark:text-gray-300">{t('feature3Description')}</p>
 				</div>
 			</div>
 		</section>
@@ -132,7 +132,7 @@ return (
 					
 					<Link 
 					to="/addcharacters" 
-					className="text-gray-300 hover:text-white transition-colors font-medium"
+					className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 					>			
 						<button className="group relative bg-gradient-to-r from-red-700 to-orange-600 rounded-xl px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-orange-500/50 min-w-64">
 							<div className="text-center">
@@ -146,7 +146,7 @@ return (
 
 					<Link 
 						to="/addbosses" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>	
 						{/* Add Character Button - Simple */}
 						<button className="group relative bg-gradient-to-r from-blue-700 to-purple-600 rounded-xl px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-purple-500/50 min-w-64">

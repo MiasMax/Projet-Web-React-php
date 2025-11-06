@@ -53,7 +53,7 @@ return (
 		</div>
 
 			{/* nav */}
-			<nav className={`fixed top-0 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-sm shadow-lg transition-transform duration-300 ${
+			<nav className={`fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-800/95 backdrop-blur-sm shadow-lg transition-transform duration-300 ${
 				isVisible ? 'translate-y-0' : '-translate-y-full'
 				}`}>
 
@@ -69,31 +69,31 @@ return (
 					<div className="space-x-6">
 						<Link 
 						to="/" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>
 						{t('home')}
 						</Link>
 						<Link 
 						to="/characters" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>
 						Characters
 						</Link>
 						<Link 
 						to="/bosses" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>
 						Bosses
 						</Link>
 						<Link 
 						to="/addcharacters" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>
 						{t('addChara')}
 						</Link>
 						<Link 
 						to="/addbosses" 
-						className="text-gray-300 hover:text-white transition-colors font-medium"
+						className="text-gray-700 dark:text-gray-300 hover:text-white transition-colors font-medium"
 						>
 						{t('addBoss')}
 						</Link>
@@ -114,7 +114,7 @@ return (
 			</main>
 
 			{/* Footer */}
-			<footer className="bg-gray-800 border-t border-gray-700 py-8">
+			<footer className="bg-gray-100 dark:bg-gray-800 border-t border-gray-700 py-8">
 				<div className="container mx-auto px-4 text-center text-gray-400">
 				<p>{t('footer')}</p>
 				<p className="mt-2">{t('disclaimer')}</p>
