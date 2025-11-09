@@ -23,7 +23,25 @@ const Characters = () => {
 		})
 		.catch(error => console.error('Error:', error));
 	}, [i18n.language]);
-	
+
+	const handleDelete = async (e) => {
+		e.preventDefault();
+
+		const id = e.target.id;
+
+		// Send POST request to your backend
+		const response = await fetch(`${API_URL}api/characters/delete`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: id //the id 
+		});
+
+		const elementToRemove = document.getElementById("toDelete"+id);
+		elementToRemove.remove();
+	};
+
 	return (
 		<div className="container mx-auto px-4 py-8 pt-36 pb-20">
 			<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">{t('Characters')}</h1>
@@ -36,6 +54,7 @@ const Characters = () => {
 
 					<div 
 						key={character.id} 
+						id={"toDelete"+character.id} 
 						className="
 							bg-white/80 dark:bg-slate-900/80 
 							rounded-2xl 
@@ -109,9 +128,19 @@ const Characters = () => {
 							))}
 						</ul>
 						</div>
+ 
+						<div className="flex justify-center">
+						<button 
+						
+							id={character.id} 
+							onClick={handleDelete}
+							className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200"
+						>
+							Delete
+						</button>
+						</div>
 					</div>
 				</div>
-
 			))}
 		</div>
 	</div>

@@ -34,6 +34,25 @@ const Bosses = () => {
 		.catch(error => console.error('Error:', error));
 	}, [i18n.language]);
 
+	
+	const handleDelete = async (e) => {
+		e.preventDefault();
+
+		const id = e.target.id;
+
+		// Send POST request to your backend
+		const response = await fetch(`${API_URL}api/bosses/delete`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: id //the id 
+		});
+
+		const elementToRemove = document.getElementById("toDelete"+id);
+		elementToRemove.remove();
+	};
+	
   return (
 	<div className="container mx-auto px-4 py-8 pt-36 pb-20">
 		<h1 className="text-4xl text-yellow-400 font-bold text-center mb-2">{t('bossesTitle')}</h1>
@@ -43,7 +62,11 @@ const Bosses = () => {
 		
 		<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
 			{BossesList.map(boss => (
-					<div key={boss.id} className="bg-gray-100 dark:bg-gray-800/80 rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-600/50 backdrop-blur-sm">	
+					<div 
+						key={boss.id}
+						id={"toDelete"+boss.id} 
+						className="bg-gray-100 dark:bg-gray-800/80 rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-gray-600/50 backdrop-blur-sm"
+					>	
 						<div className="bg-gradient-to-r from-red-900 via-purple-800 to-indigo-900 p-6 relative">
 							
 							<div className="flex items-center justify-between">
@@ -122,8 +145,18 @@ const Bosses = () => {
 								</ul>
 							</div>
 							</div>
+							
+						<div className="flex justify-center">
+							<button 
+								id={boss.id} 
+								onClick={handleDelete}
+								className="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200"
+							>
+								Delete
+							</button>
 						</div>
-						</div>
+					</div>
+				</div>
 			))}
 		</div>
 	</div>

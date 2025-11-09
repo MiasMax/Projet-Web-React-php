@@ -93,5 +93,21 @@ class CharacterController {
 			
 		}
 	}
+
+	public function delete() {
+
+		$json = file_get_contents('php://input');
+
+		// Convertir la chaîne JSON en tableau associatif PHP
+		$id = json_decode($json, true);
+
+		$result = $this->characterModel->delete($id);
+
+		echo json_encode([
+			'success' => true,
+			'message' => 'Character deleted successfully',
+			'deletedId' => $id
+		]);
+	}
 }
 ?>

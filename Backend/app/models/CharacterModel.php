@@ -53,5 +53,19 @@ class CharacterModel {
 		
 		return false;
 	}
+	
+	public function delete($id) {
+
+		$query = "DELETE FROM characters WHERE id = $1 RETURNING id";
+
+		$result = pg_query_params($this->conn, $query, [$id]);
+
+		if ($result) {
+			$row = pg_fetch_assoc($result);
+			return $row['id']; // deleted ID
+		}
+
+		return false;
+	}
 }
 ?>

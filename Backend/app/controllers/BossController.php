@@ -96,5 +96,21 @@ class BossController {
 			
 		}
 	}
+	
+	public function delete() {
+
+		$json = file_get_contents('php://input');
+
+		// Convertir la chaîne JSON en tableau associatif PHP
+		$id = json_decode($json, true);
+		
+		$result = $this->bossModel->delete($id);
+
+		echo json_encode([
+			'success' => true,
+			'message' => 'Boss deleted successfully',
+			'deletedId' => $deletedId
+		]);
+	}
 }
 ?>
