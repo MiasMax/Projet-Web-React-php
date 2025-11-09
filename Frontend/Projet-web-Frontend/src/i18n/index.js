@@ -90,6 +90,7 @@ const resources = {
 			charactersTitle:'Character',
 			popupboss: 'Boss added successfully to the ENGLISH version',
 			popupchara: 'Character added successfully to the ENGLISH version of the wiki',
+			Delete: 'delete',
 		}
 	},
 	fr: {
@@ -177,6 +178,7 @@ const resources = {
 			charactersTitle: 'Personnage',
 			popupboss: 'Boss ajouté avec succès à la version FRANÇAISE',
 			popupchara: 'Personnage ajouté avec succès à la version FRANÇAISE du wiki',
+			Delete: 'supprimer',
 		}
 	}
 };
