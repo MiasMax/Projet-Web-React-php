@@ -49,8 +49,7 @@ const Bosses = () => {
 			body: id //the id 
 		});
 
-		const elementToRemove = document.getElementById("toDelete"+id);
-		elementToRemove.remove();
+		setBossesList(prev => prev.filter(c => c.id !== id));
 	};
 	
   return (

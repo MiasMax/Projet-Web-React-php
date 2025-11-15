@@ -37,9 +37,8 @@ const Characters = () => {
 			},
 			body: id //the id 
 		});
-
-		const elementToRemove = document.getElementById("toDelete"+id);
-		elementToRemove.remove();
+		
+		setCharactersList(prev => prev.filter(c => c.id !== id));
 	};
 
 	return (

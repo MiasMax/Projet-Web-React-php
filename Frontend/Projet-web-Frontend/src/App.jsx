@@ -8,8 +8,8 @@ import LanguageSwitcher from './components/LanguageSwitcher'
 import ThemeToggleButton from './components/ThemeToggleButton'
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-export const API_URL_IMG = 'http://localhost/public/images/';
-export const API_URL = 'http://localhost/';
+export const API_URL_IMG = 'http://localhost:8000/public/images/';
+export const API_URL = 'http://localhost:8000/';
 
 function App() {
 

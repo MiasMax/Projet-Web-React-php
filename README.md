@@ -2,29 +2,8 @@
 
 Projet de développement web full-stack avec React en frontend et PHP/PostgreSQL en backend.
 
-Back
-C:\xampp\htdocs
-
 Front
 D:\Project Informatique\Projet-Web-React-php
-
-command to copy file from xampp
-```bash
-cp -r C:\xampp\htdocs\* .\Backend\
-cp -r .\Backend\* C:\xampp\htdocs\
-
-cp -r C:\xampp\htdocs\* .\
-cp -r .\* C:\xampp\htdocs\
-
-a revoir
-
-rm -r "D:\Project Informatique\Projet-Web-React-php\Backend\app\*" 
-robocopy "C:\xampp\htdocs\app\" "D:\Project Informatique\Projet-Web-React-php\Backend\app\" /E
-robocopy "C:\xampp\htdocs\*" "D:\Project Informatique\Projet-Web-React-php\Backend\app\" /E
-rm -r "C:\xampp\htdocs\app\*"
-robocopy "D:\Project Informatique\Projet-Web-React-php\Backend\app\*" "C:\xampp\htdocs\app\" /E
-PS C:\xampp\htdocs> robocopy "C:\xampp\htdocs\app" "D:\Project Informatique\Projet-Web-React-php\Backend" /E
-```
 
 ## Prérequis
 
@@ -135,3 +114,12 @@ ouvre psql
 
 
 
+
+
+
+
+
+
+Dans Front npm run dev 
+
+dans back php -S localhost:8000
