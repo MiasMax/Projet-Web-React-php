@@ -1,125 +1,108 @@
-# 🌐 Projet Web ENSIIE
+# 🚀 Guide d'installation rapide - Projet Web ENSIIE 
 
-Projet de développement web full-stack avec React en frontend et PHP/PostgreSQL en backend.
+**Créé par** : Maxence TOURNAUD  
+**Date** : Novembre 2025
 
-Front
-D:\Project Informatique\Projet-Web-React-php
+## 📋 Prérequis
 
-## Prérequis
+Installez les outils suivants avant de commencer :
 
-Avant de commencer, assurez-vous d'avoir installé les outils suivants :
+- **Node.js** - https://nodejs.org
+- **PHP** (version 7.4 ou supérieure)
+- **PostgreSQL** - https://www.postgresql.org/download
 
-- **Node.js** (pour le frontend React)
-- **XAMPP** (serveur web local)
-- **PostgreSQL** (base de données)
+## 📦 Installation depuis le fichier .zip
 
-## 📥 Installation
+### 1. Extraction du projet
 
-### 1. Configuration de l'environnement
-
-#### PostgreSQL
-- Téléchargez et installez PostgreSQL depuis : https://www.postgresql.org/download
-
-#### Configuration PHP
-- Allez dans `C:\xampp\php\php.ini`
-- Décommentez les lignes suivantes :
-  ```ini
-  extension=pdo_pgsql
-  extension=pgsql
-
-##### Add composer au php de xampp
-
-install :
-https://getcomposer.org/download
-
-add this to your path (du system ou du user)
-C:\ProgramData\ComposerSetup\bin
-
-system -> variable d'environement
-
-##### install dotenv variable
-composer require vlucas/phpdotenv
-
-#### Configuration React avec vite
-
-Crée un projet react :
 ```bash
-npm create vite@latest Projet-web-Frontend
+# Extrayez le fichier .zip dans votre répertoire de travail
 ```
+
+### 2. Configuration de la base de données
+
+#### Installation PostgreSQL
+1. Installez PostgreSQL depuis le lien ci-dessus
+2. Configurez le mot de passe : `projetweb`
+3. Créez/utilisez la base de données : `postgres`
+4. Ajouté les tables et les donnée qui sont dans le fichier:
 ```bash
+sqlData/silksongData.sql
+```
+
+### 3. Configuration PHP
+
+#### Activer les extensions PostgreSQL
+1. Ouvrez le fichier de configuration PHP : `php.ini`
+2. Décommentez (retirez le `;` devant) les lignes suivantes :
+   ```ini
+   extension=pdo_pgsql
+   extension=pgsql
+   ```
+
+### 4. Installation des dépendances Frontend
+
+```bash
+# Naviguez vers le dossier Frontend
+cd ../Frontend/Projet-web-Frontend
+
+# Installez les dépendances npm
+npm install
+
+# Installez React Router
 npm install react-router-dom
 ```
 
-#### Configuration tailwindcss
+### 5. Configuration de la connexion
 
-Changer le index.html : 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Silksong Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+Les paramètres de connexion sont définis dans :
+
+**Frontend** : address du backend (`app.jsx`) :
+```javascript
+export const API_URL_IMG = 'http://localhost:8000/public/images/';
+export const API_URL = 'http://localhost:8000/';
 ```
 
-## 🚀 Execution
+**Backend** : connection to the database (`Database.php`) :
+```php
+private $host = 'localhost';
+private $db_name = 'postgres';
+private $username = 'postgres';
+private $password = 'projetweb';
+```
 
-## Frontend
+## ▶️ Lancement de l'application
 
-### 1. Lance REACT
+### Démarrer le Backend
 
-Aller dans le projet Projet-web-react-php/Frontend
-
-Lancé le server React avec :
 ```bash
+# Dans le dossier Backend
+cd Backend
+php -S localhost:8000
+```
+
+### Démarrer le Frontend
+
+```bash
+# Dans le dossier Frontend
+cd Frontend/Projet-web-Frontend
 npm run dev
 ```
-Et se rendre a l'adresse local: http://localhost:5173
 
-## Backend
+L'application sera accessible à : **http://localhost:5173**
 
-### 1. XAMPP
-
-Ouvre XAMPP 
-démarre le service Apache 
-
-Les fichier du server sont dans :
-```bash
-C:\xampp\htdocs
-```
-
-on se connect a la page web comme depuis :
-http://localhost/index.php
-
-## Base de donnée
-
-#### Interface Graphique :
-
-ouvre "pgadmin 4" avec projetweb
-
-query tool worplace
-select the current BD
-
-#### CMD :
-
-ouvre psql 
+## 🔗 URLs importantes
 
 
+## ✅ Vérification
 
+Une fois tout lancé, vous devriez avoir :
+- ✓ PostgreSQL en cours d'exécution
+- ✓ Serveur PHP sur le port 8000
+**Backend API** : http://localhost:8000
+- ✓ Application React sur le port 5173
+**Frontend** : http://localhost:5173
 
+---
 
-
-
-
-
-Dans Front npm run dev 
-
-dans back php -S localhost:8000
+📝 **Note** : Ce projet utilise Tailwind CSS via CDN (déjà configuré dans `index.html`)

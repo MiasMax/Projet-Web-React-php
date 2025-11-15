@@ -17,28 +17,27 @@ function App() {
 	const [isVisible, setIsVisible] = useState(true);
 	const [lastScrollY, setLastScrollY] = useState(0);
 
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			
+			if (currentScrollY > lastScrollY && currentScrollY > 100) {
+				// Scrolling down & past 100px - hide navbar
+				setIsVisible(false);
+			} else if (currentScrollY < lastScrollY) {
+				// Scrolling up - show navbar
+				setIsVisible(true);
+			}
+			
+			setLastScrollY(currentScrollY);
+		};
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down & past 100px - hide navbar
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        // Scrolling up - show navbar
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
+		window.addEventListener('scroll', handleScroll, { passive: true });
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [lastScrollY]);
 
-  
+	
 return (
 	<div className="min-h-screen">
 		<div 
@@ -77,7 +76,7 @@ return (
 						to="/characters" 
 						className="text-gray-700 dark:text-gray-300 transition-colors font-medium"
 						>
-						Characters
+						{t('charactersTitle')}
 						</Link>
 						<Link 
 						to="/bosses" 
@@ -121,7 +120,7 @@ return (
 				</div>
 			</footer>
 		</div>
-)
+	)
 }
 
 export default App

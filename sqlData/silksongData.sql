@@ -1,4 +1,3 @@
-/*
 DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS bosses;
 
@@ -10,7 +9,7 @@ CREATE TABLE characters (
     abilities JSONB NOT NULL,
     image VARCHAR(100) NOT NULL,
     role VARCHAR(50) NOT NULL,
-	lang VARCHAR(5) NOT NULL
+    lang VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE bosses (
@@ -23,7 +22,7 @@ CREATE TABLE bosses (
     attacks JSONB NOT NULL,
     image VARCHAR(100) NOT NULL,
     rewards JSONB NOT NULL,
-	lang VARCHAR(5) NOT NULL
+    lang VARCHAR(50) NOT NULL
 );
 
 INSERT INTO characters (id, name, title, description, abilities, image, role, lang) VALUES 
@@ -140,4 +139,3 @@ INSERT INTO bosses (id, name, title, description, location, difficulty, attacks,
 (42, 'Tormented Trobbio', 'L’Âme Tourmentée', 'Une version corrompue du personnage Trobbio, consumée par la souffrance et la folie.', 'Lieu Inconnu', 'Moyen', '["Torment Strike", "Anguished Cry", "Suffering Slash", "Pain Wave"]', 'tormented-trobbio.png', '["Âme tourmentée", "Bobine de Soie"]', 'fr'),
 (43, 'Plasmified Zango', 'Le Transfiguré', 'Un boss ayant subi une plasmification, une transformation qui le rend encore plus dangereux et surnaturel.', 'Lieu Inconnu', 'Difficile', '["Plasma Burst", "Fluid Strike", "Transformation", "Energy Wave"]', 'plasmified-zango.png', '["Noyau de plasma", "Bobine de Soie"]', 'fr'),
 (44, 'Grand Mother Silk', 'La Tisseuse des Destins', 'Le boss final de Hollow Knight: Silksong. Un être supérieur semblable au Roi Pâle et à la Radiance, contrôlant la soie et les fils du destin. La vaincre débloque la fin principale du jeu.', 'Sommet de la Citadelle', 'Extrême', '["Thread of Fate", "Silk Weave", "Divine Loom", "Ultimate Binding", "Reality Warp"]', 'grand-mother-silk.png', '["Soie véritable", "Sceau final", "Déblocage de fin"]', 'fr');
-*/
